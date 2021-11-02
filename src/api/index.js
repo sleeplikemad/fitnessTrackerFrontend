@@ -179,13 +179,12 @@ export async function addRoutine(
   try {
     const token = getToken();
     const { data } = await axios.post(
-      `${BASE}/routines}`,
+      `${BASE}routines`,
       {
-        routine: {
           name: name,
           goal: goal,
           isPublic: isPublic
-        },
+        
       },
       {
         headers: {

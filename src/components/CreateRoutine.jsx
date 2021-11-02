@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { addRoutine } from '../api';
 
-const CreateRoutine = ({ setAllRoutines }) => {
+const CreateRoutine = ({ allRoutines, setAllRoutines }) => {
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false);
-
+console.log(setAllRoutines)
     return (
         <div className="create-routine-main-container">
             <h2>Create a new routine </h2>
@@ -21,7 +21,10 @@ const CreateRoutine = ({ setAllRoutines }) => {
                         setName('');
                         setGoal('');
                         setIsPublic(false);
-                        setAllRoutines(newRoutine);
+
+                        const allRoutinesCopy = allRoutines.slice();
+                        allRoutinesCopy.unshift(newRoutine);
+                        setAllRoutines(allRoutinesCopy);
 
                     } catch (err) {
                         console.log(err);
