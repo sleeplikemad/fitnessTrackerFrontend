@@ -6,7 +6,9 @@ import { getToken } from "../auth";
  * 
  * You need to replace YOUR_API_KEY in the string associated with KEY with your actual API key
  */
-const BASE = 'http://fitnesstrac-kr.herokuapp.com/api/'
+
+export const BASE = 'http://fitnesstrac-kr.herokuapp.com/api/'
+
 
 // this is an example for an api call with axios
 

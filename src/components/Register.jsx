@@ -1,4 +1,6 @@
 import React from 'react';
+import { registerUser } from "../api";
+import { storeToken } from "../auth";
 
 const Register = (props)=>{
 return(
