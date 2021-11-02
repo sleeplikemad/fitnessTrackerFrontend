@@ -1,13 +1,17 @@
 import React from 'react';
 
-import {SingleRoutine} from './';
+import { SingleRoutine } from './';
 
-const Routines =({allRoutines})=>{
-return(
-    <SingleRoutine
-    allRoutines={allRoutines}
-    />
-)
+const Routines = ({ allRoutines }) => {
+    return (
+        <div className="routines-main-container">
+            <div>
+            <SingleRoutine
+                allRoutines={allRoutines}
+            />
+            </div>
+        </div>
+    )
 }
 
 export default Routines;

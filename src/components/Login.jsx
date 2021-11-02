@@ -15,9 +15,10 @@ const Login = ({setIsLoggedIn}) => {
                     e.preventDefault();
                     try {
                         const results = await loginUser(username, password);
-                        storeToken(results.data.token);
+                        storeToken(results.token);
                         setIsLoggedIn(true);
-                        // handleClick();
+                        setUsername('');
+                        setPassword('');
                     } catch (err) {
                         console.log(err);
                     }
