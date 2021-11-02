@@ -20,6 +20,7 @@ import {
 
 const App = () => {
   const [allRoutines, setAllRoutines] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div id="app">
@@ -32,13 +33,34 @@ const App = () => {
           />
         </Route>
         <Route path="/myroutines">
-          <h2>my routines</h2>
+          <MyRoutines isLoggedIn={isLoggedIn} />
+        </Route>
+        <Route path="/singleroutine">
+          <SingleRoutine />
+        </Route>
+        <Route path="/singlemyroutine">
+          <SingleMyRoutine isLoggedIn={isLoggedIn} />
+        </Route>
+        <Route path="/createroutine">
+          <CreateRoutine isLoggedIn={isLoggedIn} />
         </Route>
         <Route path="/activities">
-          <h2>activities</h2>
+          <Activities />
+        </Route>
+        <Route path="/createactivity">
+          <CreateActivity isLoggedIn={isLoggedIn} />
         </Route>
         <Route path="/login">
-          <Login />
+          <Login 
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+          />
+        </Route>
+        <Route path="/register">
+          <Register
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+          />
         </Route>
         <Route exact path="/">
           <Header />
