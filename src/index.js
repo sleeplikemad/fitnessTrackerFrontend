@@ -32,7 +32,7 @@ const App = () => {
             allRoutines={allRoutines}
           />
         </Route>
-        <Route path="/myroutines">
+        {/* <Route path="/myroutines">
           <MyRoutines isLoggedIn={isLoggedIn} />
         </Route>
         <Route path="/singleroutine">
@@ -49,7 +49,7 @@ const App = () => {
         </Route>
         <Route path="/createactivity">
           <CreateActivity isLoggedIn={isLoggedIn} />
-        </Route>
+        </Route> */}
         <Route path="/login">
           <Login 
             isLoggedIn={isLoggedIn}
