@@ -41,8 +41,20 @@
 }
 
 /* routines */
-.single-routine{
+.single-routine-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     background-color: white;
-    margin: 1.5em;
+    margin: 1em;
     padding: 25px;
+}
+
+.routines-main-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1.5em;
+   
 }

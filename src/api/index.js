@@ -16,10 +16,10 @@ export const BASE = 'http://fitnesstrac-kr.herokuapp.com/api/'
 export async function loginUser(username, password) {
   try {
     const { data } = await axios.post(`${BASE}/users/login`, {
-      user: {
-        username: username,
-        password: password,
-      },
+
+      username: username,
+      password: password
+
     });
     console.log("login: ", data)
     return data;
@@ -61,10 +61,10 @@ export async function fetchAllActivities() {
 export async function registerUser(username, password) {
   try {
     const { data } = await axios.post(`${BASE}/users/register`, {
-      user: {
+      
         username: username,
-        password: password,
-      },
+        password: password
+      
     });
     console.log("registerUser: ", data)
     return data;
@@ -107,7 +107,7 @@ export async function addActivities(
 // a: updates activity
 export async function updateActivity(
   name,
-  description, 
+  description,
   activityId
 ) {
   try {
@@ -164,7 +164,7 @@ export async function fetchAllRoutines() {
 export async function getMyID() {
   try {
     const token = getToken();
-    const {data} = await axios.get(`${BASE}/users/me`);
+    const { data } = await axios.get(`${BASE}/users/me`);
   } catch (error) {
     throw error;
   }
@@ -172,10 +172,10 @@ export async function getMyID() {
 
 // a: creates a new routine
 export async function addRoutine(
-  name, 
+  name,
   goal,
   isPublic
-  ) {
+) {
   try {
     const token = getToken();
     const { data } = await axios.post(
@@ -194,7 +194,7 @@ export async function addRoutine(
         },
       }
     );
-    
+
     console.log("addRoutine: ", data)
     return data;
   } catch (error) {
@@ -205,10 +205,10 @@ export async function addRoutine(
 // a: updates a routine
 export async function updateRoutine(
   routineId,
-  name, 
+  name,
   goal,
   isPublic
-  ) {
+) {
   try {
     const token = getToken();
     const { data } = await axios.patch(
@@ -227,7 +227,7 @@ export async function updateRoutine(
         },
       }
     );
-    
+
     console.log("updateRoutine: ", data)
     return data;
   } catch (error) {
@@ -259,11 +259,11 @@ export async function deleteRoutine(
 
 // a: adds a specific activity to a specific routine
 export async function addActivityToRoutine(
-  routineId, 
+  routineId,
   activityId,
   count,
   duration
-  ) {
+) {
   try {
     const token = getToken();
     const { data } = await axios.post(
@@ -282,7 +282,7 @@ export async function addActivityToRoutine(
         },
       }
     );
-    
+
     console.log("addActivityToRoutine: ", data)
     return data;
   } catch (error) {
@@ -293,9 +293,9 @@ export async function addActivityToRoutine(
 // a: updates a routineActivity.  unfinished, needs to check if user owns RA
 export async function updateRoutineActivity(
   routineActivityId,
-  count, 
+  count,
   duration
-  ) {
+) {
   try {
     const token = getToken();
     const { data } = await axios.patch(
@@ -313,7 +313,7 @@ export async function updateRoutineActivity(
         },
       }
     );
-    
+
     console.log("updateRoutineActivity: ", data)
     return data;
   } catch (error) {

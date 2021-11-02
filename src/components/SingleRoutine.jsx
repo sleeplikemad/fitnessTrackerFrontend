@@ -10,10 +10,10 @@ const SingleRoutine = ({ allRoutines }) => {
                     allRoutines.map(e => {
 
                         return (
-                            <div key={`routine ${e.id}`} className="single-routine">
-                                <h2>{e.name}</h2>
+                            <div key={`routine ${e.id}`} className="single-routine-main">
+                                <h2 className="single-routine-title">{e.name}</h2>
                                 <p>{e.goal}</p>
-                                <p>{e.creatorName}</p>
+                                <p><span className="single-routine-username">{e.creatorName}</span></p>
                             </div>
                         )
                     })
