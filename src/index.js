@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-
+import { fetchAllRoutines } from './api';
 // These imports won't work until you fix ./components/index.js
 import {
   BrowserRouter as Router,
@@ -16,15 +16,24 @@ import {
   Login,
   Register,
   Navbar
-} from './components'
+} from './components';
 
 const App = () => {
   const [allRoutines, setAllRoutines] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+
+  useEffect(async () => {
+    const routines = await fetchAllRoutines();
+    setAllRoutines(routines);
+  }, []);
+
+
   return (
     <div id="app">
-    <Navbar />
+      <Navbar
+        isLoggedIn={isLoggedIn}
+      />
 
       <Switch>
         <Route path="/routines">
@@ -51,6 +60,7 @@ const App = () => {
           <CreateActivity isLoggedIn={isLoggedIn} />
         </Route>
         <Route path="/login">
+
           <Login 
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
@@ -59,6 +69,7 @@ const App = () => {
         <Route path="/register">
           <Register
             isLoggedIn={isLoggedIn}
+
             setIsLoggedIn={setIsLoggedIn}
           />
         </Route>

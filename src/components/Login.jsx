@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { storeToken } from '../auth';
+import {loginUser} from '../api'
 
-const Login = (props) => {
+const Login = ({setIsLoggedIn}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -13,8 +14,9 @@ const Login = (props) => {
                 onSubmit={async (e) => {
                     e.preventDefault();
                     try {
-                        // const results = await loginUser(username, password);
-                        // storeToken(results.data.token);
+                        const results = await loginUser(username, password);
+                        storeToken(results.data.token);
+                        setIsLoggedIn(true);
                         // handleClick();
                     } catch (err) {
                         console.log(err);

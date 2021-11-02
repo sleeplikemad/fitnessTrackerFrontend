@@ -2,9 +2,11 @@ import React from 'react';
 
 import {SingleRoutine} from './';
 
-const Routines =()=>{
+const Routines =({allRoutines})=>{
 return(
-    <SingleRoutine />
+    <SingleRoutine
+    allRoutines={allRoutines}
+    />
 )
 }
 
