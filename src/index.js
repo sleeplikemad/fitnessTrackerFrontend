@@ -39,6 +39,7 @@ const App = () => {
         <Route path="/routines">
           <Routines
             allRoutines={allRoutines}
+            setAllRoutines={setAllRoutines}
           />
         </Route>
         {/* <Route path="/myroutines">

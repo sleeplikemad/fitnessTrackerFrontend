@@ -6,6 +6,16 @@
     font-family: sans-serif;
 }
 
+/* navbar */
+
+.navbar {
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
 /* login */
 
 .login {
@@ -41,20 +51,64 @@
 }
 
 /* routines */
-.single-routine-main{
+
+.single-routine-main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     background-color: white;
-    margin: 1em;
+    /* margin: 1em; */
     padding: 25px;
+    border: 1px solid lightgray;
 }
 
-.routines-main-container{
+.routines-main-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin: 1.5em;
-   
+    justify-content: center;
+}
+
+.create-routine-main-container {}
+
+.create-routine-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    margin: 1em;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    background-color: white;
+}
+
+.create-routine-form input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid lightgrey;
+}
+
+.create-routine-form textarea {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid lightgrey;
+}
+
+.create-routine-form button {
+    background-color: #354f52;
+    color: white;
+    margin: 5px;
+    border-radius: 2px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.routine-checkbox {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: 5px;
 }
