@@ -15,6 +15,7 @@ import {
   Routines,
   Login,
   Register,
+  Navbar
 } from './components'
 
 const App = () => {
@@ -22,16 +23,7 @@ const App = () => {
 
   return (
     <div id="app">
-      <nav className="nav-bar">
-        <section className="nav-bar-links">
-          <Link className="nav-link" to="/">HOME</Link>
-          <Link className="nav-link" to="/routines">ROUTINES</Link>
-          <Link className="nav-link" to="/myroutines">MY ROUTINES</Link>
-          <Link className="nav-link" to="/activities">ACTIVITIES</Link>
-          <Link className="nav-link" to="/login">LOGIN</Link>
-          <Link className="nav-link" to="/register">REGISTER</Link>
-        </section>
-      </nav>
+    <Navbar />
 
       <Switch>
         <Route path="/routines">
@@ -47,9 +39,6 @@ const App = () => {
         </Route>
         <Route path="/login">
           <Login />
-        </Route>
-        <Route path="/register">
-          <Register />
         </Route>
         <Route exact path="/">
           <Header />
