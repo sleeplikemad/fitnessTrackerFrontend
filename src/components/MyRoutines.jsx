@@ -1,10 +1,17 @@
 import React from 'react';
 
-import {SingleMyRoutine} from './';
+import {SingleMyRoutine, CreateRoutine} from './';
 
-const MyRoutines =()=>{
+const MyRoutines =({allRoutines, setAllRoutines})=>{
 return(
+    <div>
     <SingleMyRoutine />
+    
+    <CreateRoutine
+    allRoutines={allRoutines}
+    setAllRoutines ={setAllRoutines}
+    />
+</div>
 )
 }
 
