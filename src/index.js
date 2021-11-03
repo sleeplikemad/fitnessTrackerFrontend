@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { fetchAllRoutines } from './api';
+import { fetchAllRoutines, fetchAllActivities } from './api';
 // These imports won't work until you fix ./components/index.js
 import {
   BrowserRouter as Router,
@@ -20,12 +20,16 @@ import {
 
 const App = () => {
   const [allRoutines, setAllRoutines] = useState([]);
+  const [allActivities, setAllActivities] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
   useEffect(async () => {
     const routines = await fetchAllRoutines();
     setAllRoutines(routines);
+
+    const activities = await fetchAllActivities();
+    setAllActivities (activities);
   }, []);
 
 

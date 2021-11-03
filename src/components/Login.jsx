@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { storeToken } from '../auth';
-import {loginUser} from '../api'
+import { loginUser } from '../api'
 
-const Login = ({setIsLoggedIn}) => {
+const Login = ({ setIsLoggedIn }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     return (
-        <div className="login">
+        <div className="login-main-container">
+            <div className="login-left-container">
+                <h1 className="logo-text">Fitness Tracker</h1>
+            </div>
+            <div className="login-right-container">
+                <div className="login-right-inner-container">
+            <h2>Sign In</h2>
             <form
                 className="login-form"
                 onSubmit={async (e) => {
@@ -23,24 +29,27 @@ const Login = ({setIsLoggedIn}) => {
                         console.log(err);
                     }
                 }}>
-
+                <label htmlFor="username">Username</label>
                 <input
                     type="text"
                     id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Username" />
-
+                    placeholder="Enter username"
+                />
+                <label htmlFor="password">Password</label>
                 <input
                     type="password"
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password" />
+                    placeholder="Enter password" />
 
-                <button>Login</button>
+                <button>Sign In</button>
             </form>
-            <p>Don't have an account? <Link className='signup-link' to="/register">Sign Up</Link></p>
+            <p>Want to become a member? <Link className='signup-link' to="/register">Sign Up</Link></p>
+            </div>
+            </div>
         </div>
     )
 }

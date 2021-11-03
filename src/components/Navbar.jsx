@@ -12,8 +12,9 @@ const Navbar = ({ isLoggedIn }) => {
           Logout
         </NavLink>
       ) : (
-        <NavLink to="/login"> Login/Register</NavLink>
+        <NavLink to="/login"> Sign In</NavLink>
       )}
+      <NavLink to="/register">Sign Up</NavLink>
     </div>
   );
 };

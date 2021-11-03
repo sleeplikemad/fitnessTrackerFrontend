@@ -6,19 +6,62 @@
     font-family: sans-serif;
 }
 
-/* navbar */
-
-.navbar {
-    display: flex;
-}
-
 a {
     text-decoration: none;
 }
 
+.logo-text{
+    color: #ececec;
+}
+
+/* navbar */
+
+.navbar {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar a {
+    margin: 1em 0;
+    padding: 10px;
+}
+
+.navbar a:last-child {
+    border: 1px solid lightgray;
+}
+
 /* login */
 
-.login {
+.login-main-container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 50%;
+    background-color: #0A2342;
+    height: 100%;
+}
+
+.login-right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 50%;
+    background-color: #ececec;
+    height: 100%;
+}
+
+.login-right-inner-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,38 +72,49 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 300px;
+    width: 500px;
     margin: 1em;
     padding: 10px;
-    border: 1px solid lightgrey;
     border-radius: 2px;
+    height: 100%;
 }
 
 .login-form input {
     padding: 10px;
     margin: 5px;
-    border: 1px solid lightgrey;
+    border: 1px solid rgb(226, 223, 223);
+}
+
+.login-form label {
+    padding: 8px 0;
+    margin-left: 5px;
 }
 
 .login-form button {
-    background-color: #3e92cc;
+    background-color: #82886D;
     color: white;
-    margin: 5px;
+    margin: 8px 5px;
     border-radius: 2px;
     padding: 10px;
 }
 
+.signup-link {
+    font-weight: 600;
+    color: #0A2342;
+}
+
+/* register */
+
 /* routines */
 
-.single-routine-main {
+.single-routine-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     background-color: white;
-    /* margin: 1em; */
     padding: 25px;
-    border: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
 }
 
 .routines-main-container {
@@ -71,7 +125,22 @@ a {
     justify-content: center;
 }
 
-.create-routine-main-container {}
+.routine-activity-link button {
+    background-color: black;
+    color: white;
+    margin: 8px 5px;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+/* create routine */
+
+.create-routine-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .create-routine-form {
     display: flex;
@@ -80,7 +149,6 @@ a {
     width: 400px;
     margin: 1em;
     padding: 10px;
-    border: 1px solid lightgrey;
     border-radius: 2px;
     background-color: white;
 }
@@ -88,17 +156,17 @@ a {
 .create-routine-form input {
     padding: 10px;
     margin: 5px;
-    border: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
 }
 
 .create-routine-form textarea {
     padding: 10px;
     margin: 5px;
-    border: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
 }
 
 .create-routine-form button {
-    background-color: #354f52;
+    background-color: black;
     color: white;
     margin: 5px;
     border-radius: 2px;

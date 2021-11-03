@@ -43,7 +43,7 @@ console.log(setAllRoutines)
                     value={goal}
                     onChange={(e) => setGoal(e.target.value)}
                     placeholder="Routine Goal"
-                    rows={8} />
+                    rows={6} />
 
                 <label className="routine-checkbox">
                     <input

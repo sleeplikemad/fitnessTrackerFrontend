@@ -6,6 +6,7 @@ export { default as Login } from './Login';
 export { default as Register } from './Register';
 export { default as Navbar } from './Navbar';
 export { default as SingleRoutineActivity } from './SingleRoutineActivity';
+export { default as SingleActivity } from './SingleActivity';
 
 
 

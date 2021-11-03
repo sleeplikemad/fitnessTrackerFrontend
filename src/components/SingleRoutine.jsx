@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, Switch, Route } from 'react-router-dom';
 
 import { SingleRoutineActivity } from './';
 
-//routine name, goal, creators username, list of activities for routine
-//including activity name, description and duration and/or count
 const SingleRoutine = ({ allRoutines }) => {
+    const [routineActivity, setRoutineActivity] = useState([])
     return (
         <div>
             {
                 allRoutines.length ?
                     allRoutines.map(e => {
-                        console.log(e.activities, "!!!!")
+
                         return (
                             <>
-                                <div key={`routine ${e.id}`} className="single-routine-main">
+                                <div key={`routine ${e.name}${e.id}`} className="single-routine-card">
                                     <h2 className="single-routine-title">{e.name}</h2>
                                     <p>{e.goal}</p>
                                     <p><span className="single-routine-username">{e.creatorName}</span></p>
-                                    <button>Lets Go!</button>
-                                </div>
-                                <div>
-                                    <SingleRoutineActivity
-                                        allRoutines={e.activities} />
+                                    <Link
+                                        className="routine-activity-link"
+                                        to="/routines/activities"
+                                        onClick={() => { setRoutineActivity(e.activities) }}>
+                                        Let's Go!</Link>
                                 </div>
                             </>
                         )
                     })
                     : null
             }
+            <Switch>
+                <Route exact path="/routines/activities">
+                    <div className="single-ra-main-container">
+                        <SingleRoutineActivity
+                            allRoutines={routineActivity} />
+                    </div>
+                </Route>
+            </Switch>
         </div>
     )
 }
