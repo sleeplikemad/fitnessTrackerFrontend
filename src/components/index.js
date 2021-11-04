@@ -7,6 +7,6 @@ export { default as Register } from './Register';
 export { default as Navbar } from './Navbar';
 export { default as SingleRoutineActivity } from './SingleRoutineActivity';
 export { default as SingleActivity } from './SingleActivity';
-
+export { default as Activities } from './Activities'
 
 
