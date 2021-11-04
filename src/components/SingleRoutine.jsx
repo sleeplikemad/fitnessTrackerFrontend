@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-
-import { SingleRoutineActivity } from './';
+import { getMyID } from '../api';
 
 const SingleRoutine = ({ allRoutines }) => {
-    const [routineActivity, setRoutineActivity] = useState([]);
-    const [row, setRow] = useState(1);
+    const [userId, setUserId] = useState('');
+
+    useEffect(() => {
+        async function getUserInfo() {
+            try {
+                const { id } = await getMyID();
+                setUserId(id);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        getUserInfo();
+    }, []);
+
     return (
         <div className="single-routine-main-container">
             {
@@ -24,22 +35,27 @@ const SingleRoutine = ({ allRoutines }) => {
                                     }}>
                                     Let's Go!
                                 </Link>
+                                {
+                                    userId === e.creatorId
+                                        ? <Link
+                                            className="edit-routine-link"
+                                            to={{
+                                                pathname: "/editroutine",
+                                                state: {
+                                                    routineId: e.id,
+                                                    routineName: e.name,
+                                                    routineGoal: e.goal,
+                                                    rIsPublic: e.isPublic
+                                                }
+                                            }}>Edit This Routine</Link>
+                                        : null
+                                }
                             </div>
                         )
                     })
                     : null
             }
-            {/* <Switch>
-                <Route exact path="/routine_activities">
-                    <div className="single-ra-main-container">
-                        {routineActivity.length
-                            ? <SingleRoutineActivity
-                                allRoutines={routineActivity} />
-                            : <h2>There are no activities for this routine.</h2>
-                        }
-                    </div>
-                </Route>
-            </Switch> */}
+
         </div>
     )
 }

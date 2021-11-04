@@ -220,11 +220,9 @@ export async function updateRoutine(
     const { data } = await axios.patch(
       `${BASE}/routines/${routineId}`,
       {
-        routine: {
           name: name,
           goal: goal,
           isPublic: isPublic
-        },
       },
       {
         headers: {

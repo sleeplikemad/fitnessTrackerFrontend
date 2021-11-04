@@ -4,16 +4,20 @@ import { SingleRoutine, CreateRoutine } from './';
 
 const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
     const [userRoutines, setUserRoutines] = useState([]);
-    useEffect(async () => {
-        try {
-            const { username } = await getMyID();
-        
-            const routines = await fetchUserRoutines(username);
-            setUserRoutines(routines);
-
-        } catch (err) {
-            console.log(err)
+    
+    useEffect(() => {
+        async function getUserRoutines(){
+            try {
+                const { username } = await getMyID();
+            
+                const routines = await fetchUserRoutines(username);
+                setUserRoutines(routines);
+    
+            } catch (err) {
+                console.log(err)
+            }
         }
+       getUserRoutines();
     }, []);
 
     return (
