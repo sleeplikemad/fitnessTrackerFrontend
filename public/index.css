@@ -21,13 +21,27 @@ a {
 
 .navbar {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    position: fixed;
+    top: 1em;
+    width: 100%;
+}
+
+ .nav-links{
+    display: flex;
     justify-content: center;
+    flex: 0 1 50%;
 }
 
 .navbar a {
     margin: 1em 0;
     padding: 10px;
     color: #0A2342;
+    float: right;
+    font-weight: 600;
 }
 
 .navbar a:hover {
@@ -36,6 +50,7 @@ a {
 
 .navbar a:last-child {
     border: 1px solid #82886d;
+
 }
 
 /* header */
@@ -220,10 +235,6 @@ a {
     flex-direction: column;
     align-items: center;
     align-items: center;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: inherit;
-    grid-gap: 1em; */
 }
 
 .single-routine-card {

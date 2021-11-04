@@ -20,6 +20,7 @@ import {
   Navbar,
   SingleRoutineActivity,
   MyRoutines,
+  EditRoutine,
 } from './components';
 
 const App = () => {
@@ -69,10 +70,13 @@ const App = () => {
         </Route>
         <Route path="/singlemyroutine">
           <SingleMyRoutine isLoggedIn={isLoggedIn} />
-        </Route>
-        <Route path="/createroutine">
-          <CreateRoutine isLoggedIn={isLoggedIn} />
-        </Route> */}
+        </Route>*/}
+        <Route path="/editroutine">
+          <EditRoutine
+           isLoggedIn={isLoggedIn}
+           allRoutines={allRoutines}
+           setAllRoutines={setAllRoutines} />
+        </Route> 
         <Route path="/routine_activities">
           <SingleRoutineActivity />
         </Route>

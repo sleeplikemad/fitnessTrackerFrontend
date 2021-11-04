@@ -6,6 +6,8 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <div className="navbar">
+      {/* <section className="nav-logo"><h1>Fitness Tracker</h1></section> */}
+      <section className="nav-links">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/routines">Routines</NavLink>
       <NavLink to="/activities"> Activities</NavLink>
@@ -22,6 +24,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         <NavLink to="/login"> Sign In</NavLink>
       )}
       <NavLink to="/register">Sign Up</NavLink>
+      </section>
     </div>
   );
 };
