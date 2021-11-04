@@ -44,7 +44,9 @@ export async function fetchUserRoutines(username) {
 export async function fetchAllActivities() {
   try {
     const token = getToken()
+
     const { data } = await axios.get(`${BASE}/activities`);
+
     console.log("fetchAllActivities: ", data)
     return data;
   } catch (error) {
@@ -56,10 +58,10 @@ export async function fetchAllActivities() {
 export async function registerUser(username, password) {
   try {
     const { data } = await axios.post(`${BASE}/users/register`, {
-      
-        username: username,
-        password: password
-      
+
+      username: username,
+      password: password
+
     });
     console.log("registerUser: ", data)
     return data;
@@ -132,8 +134,10 @@ export async function updateActivity(
 // na: gets list of public routines that use specified activity
 export async function fetchRoutinesByActivity(activityId) {
   try {
+
     const { data }= await axios.get(`${BASE}/activities/${activityId}/routines`);
     console.log("fetchRoutinesByActivity: ", data)
+
 
     return data;
   } catch (err) {
@@ -144,8 +148,10 @@ export async function fetchRoutinesByActivity(activityId) {
 // na: gets all public routines
 export async function fetchAllRoutines() {
   try {
+
     const token = getToken();
     const {data} = await axios.get(`${BASE}/routines`);
+
     console.log("fetchAllRoutines: ", data)
     return data;
   } catch (err) {
@@ -172,12 +178,12 @@ export async function addRoutine(
   try {
     const token = getToken();
     const { data } = await axios.post(
-      `${BASE}routines`,
+      `${BASE}/routines`,
       {
-          name: name,
-          goal: goal,
-          isPublic: isPublic
-        
+        name: name,
+        goal: goal,
+        isPublic: isPublic
+
       },
       {
         headers: {

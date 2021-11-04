@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useHistory, Link } from 'react-router-dom';
 import { registerUser } from "../api";
 import { storeToken } from "../auth";
 
@@ -7,6 +7,12 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [registered, setRegistered] = useState(false);
+  const history = useHistory();
+
+    const handleClick=()=>{
+        history.push('/');
+    }
+
   if (isLoggedIn && !registered)
     return <div className="register-main-container">You're stilled logged in!  Log out before registering as a different user.</div>
   else if (isLoggedIn && registered)
@@ -14,8 +20,14 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <div className="register-main-container">
+       <div className="register-left-container">
+                <h1 className="logo-text">Fitness Tracker</h1>
+            </div>
+            <div className="register-right-container">
+                <div className="register-right-inner-container">
+                <h2>Sign Up</h2>
       <form
-        id="register"
+        className="register-form"
         onSubmit={async (event) => {
           event.preventDefault();
 
@@ -25,6 +37,7 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
               storeToken(results.token);
               setIsLoggedIn(true);
               setRegistered(true);
+              handleClick();
             }
             else
               console.log('register failed: ', results.error.message)
@@ -35,7 +48,7 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
           }
         }}
       >
-        <fieldset className="auth-component-input">
+       
           <label htmlFor="userName">User Name</label>
           <input
             id="userName"
@@ -46,9 +59,7 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
               setUserName(event.target.value);
             }}
           />
-        </fieldset>
-
-        <fieldset className="auth-component-input">
+       
           <label htmlFor="password">User Password</label>
           <input
             id="password"
@@ -59,10 +70,13 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
               setPassword(event.target.value);
             }}
           />
-        </fieldset>
         <button>Register</button>
       </form>
-    </div>
+      <p>Already a member? <Link className='signup-link' to="/login">Sign In</Link></p>
+
+      </div>
+    </div>  
+    </div>  
   );
 };
 
