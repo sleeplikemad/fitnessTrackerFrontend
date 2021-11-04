@@ -17,7 +17,8 @@ import {
   Register,
   Activities,
   SingleActivity,
-  Navbar
+  Navbar,
+  SingleRoutineActivity,
 } from './components';
 
 const App = () => {
@@ -28,14 +29,13 @@ const App = () => {
 
 
   useEffect(async () => {
-    try{
-    const routines = await fetchAllRoutines();
-    setAllRoutines(routines);
+    try {
+      const routines = await fetchAllRoutines();
+      setAllRoutines(routines);
 
-    const activities = await fetchAllActivities();
-
-    setAllActivities (activities);
-    }catch(err){
+      const activities = await fetchAllActivities();
+      setAllActivities(activities);
+    } catch (err) {
       console.log(err);
     }
 
@@ -68,22 +68,25 @@ const App = () => {
         <Route path="/createroutine">
           <CreateRoutine isLoggedIn={isLoggedIn} />
         </Route>*/}
+        <Route path="/routine_activities">
+          <SingleRoutineActivity />
+        </Route>
 
         <Route path="/activities/routines">
-          <SingleActivity/>
+          <SingleActivity />
         </Route>
 
         <Route path="/activities">
-          <Activities 
-            allActivities={allActivities}/>
+          <Activities
+            allActivities={allActivities} />
         </Route>
-        
+
         {/*<Route path="/createactivity">
           <CreateActivity isLoggedIn={isLoggedIn} />
         </Route> */}
         <Route path="/login">
 
-          <Login 
+          <Login
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
           />

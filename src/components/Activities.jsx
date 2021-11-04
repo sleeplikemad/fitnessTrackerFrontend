@@ -11,7 +11,6 @@ const Activities = ({ allActivities }) => {
                     allActivities.map(e => {
 
                         return (
-                            <>
                                 <div key={`activity ${e.name}${e.id}`} className="single-activity-card">
                                     <h2 className="single-activity-title">{e.name}</h2>
                                     <p><span>ID: {e.id}</span></p>
@@ -24,7 +23,6 @@ const Activities = ({ allActivities }) => {
                                         }}>
                                         Let's Go!</Link>
                                 </div>
-                            </>
                         )
                     })
                     : null

@@ -1,17 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap");
 * {
     border: 0;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 a {
     text-decoration: none;
 }
 
-.logo-text{
+.logo-text {
     color: #ececec;
+    font-weight: 600;
+    font-size: 2.5em;
 }
 
 /* navbar */
@@ -27,7 +30,7 @@ a {
     color: #0A2342;
 }
 
-.navbar a:hover{
+.navbar a:hover {
     color: #82886d;
 }
 
@@ -35,11 +38,44 @@ a {
     border: 1px solid #82886d;
 }
 
+/* header */
+
+.header-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.header-left-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 50%;
+    /* background-color:#ececec; */
+    height: 100%;
+}
+
+.header-image {
+    width: 100%;
+}
+
+.header-right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 50%;
+    /* background-color: #0A2342; */
+    height: 100%;
+}
+
 /* login */
 
 .login-main-container {
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     align-items: center;
@@ -175,8 +211,10 @@ a {
     border-radius: 2px;
     padding: 10px;
 }
+
 /* routines */
-.single-routine-main-container{
+
+.single-routine-main-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -198,11 +236,12 @@ a {
     border-bottom: 1px solid lightgray;
 }
 
-.single-routine-card a button{
+.single-routine-card a button {
     background-color: #ee6352;
     border-radius: 8px;
 }
-.single-ra-main-container{
+
+.single-ra-main-container {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -49,7 +49,7 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
         }}
       >
        
-          <label htmlFor="userName">User Name</label>
+          <label htmlFor="userName">Username</label>
           <input
             id="userName"
             type="text"
@@ -60,7 +60,7 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
             }}
           />
        
-          <label htmlFor="password">User Password</label>
+          <label htmlFor="password">Password</label>
           <input
             id="password"
             type="password"
