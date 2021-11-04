@@ -11,7 +11,6 @@ const SingleRoutine = ({ allRoutines }) => {
             {
                 allRoutines.length ?
                     allRoutines.map((e, idx) => {
-
                         return (
                             <div key={`routine ${e.name}${e.id}`} className="single-routine-card">
                                 <h2 className="single-routine-title">{e.name}</h2>
@@ -19,22 +18,18 @@ const SingleRoutine = ({ allRoutines }) => {
                                 <p><span className="single-routine-username">{e.creatorName}</span></p>
                                 <Link
                                     className="routine-activity-link"
-                                    to="/routine_activities"
-                                    onClick={() => {
-                                        setRoutineActivity(e.activities);
-                                        console.log(e.activities)
+                                    to={{
+                                        pathname: "/routine_activities",
+                                        state: { activity: e.activities, name: e.name },
                                     }}>
-                                    <button className="single-routine-card-button">
-                                        Let's Go <b>></b>
-                                            </button>
+                                    Let's Go!
                                 </Link>
                             </div>
-
                         )
                     })
                     : null
             }
-            <Switch>
+            {/* <Switch>
                 <Route exact path="/routine_activities">
                     <div className="single-ra-main-container">
                         {routineActivity.length
@@ -44,7 +39,7 @@ const SingleRoutine = ({ allRoutines }) => {
                         }
                     </div>
                 </Route>
-            </Switch>
+            </Switch> */}
         </div>
     )
 }
