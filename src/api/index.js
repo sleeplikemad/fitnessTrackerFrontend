@@ -7,7 +7,7 @@ import { getToken } from "../auth";
  * You need to replace YOUR_API_KEY in the string associated with KEY with your actual API key
  */
 
-export const BASE = 'http://fitnesstrac-kr.herokuapp.com/api/'
+export const BASE = 'http://fitnesstrac-kr.herokuapp.com/api'
 
 
 // this is an example for an api call with axios
@@ -44,12 +44,7 @@ export async function fetchUserRoutines(username) {
 export async function fetchAllActivities() {
   try {
     const token = getToken()
-    const { data } = await axios.get(`${BASE}/activities`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-    });
+    const { data } = await axios.get(`${BASE}/activities`);
     console.log("fetchAllActivities: ", data)
     return data;
   } catch (error) {
@@ -137,8 +132,7 @@ export async function updateActivity(
 // na: gets list of public routines that use specified activity
 export async function fetchRoutinesByActivity(activityId) {
   try {
-    const response = await axios.get(`${BASE}/activities/${activityId}/routines`);
-    const data = response.data;
+    const { data }= await axios.get(`${BASE}/activities/${activityId}/routines`);
     console.log("fetchRoutinesByActivity: ", data)
 
     return data;
@@ -151,8 +145,7 @@ export async function fetchRoutinesByActivity(activityId) {
 export async function fetchAllRoutines() {
   try {
     const token = getToken();
-    const response = await axios.get(`${BASE}/routines`);
-    const data = response.data;
+    const {data} = await axios.get(`${BASE}/routines`);
     console.log("fetchAllRoutines: ", data)
     return data;
   } catch (err) {

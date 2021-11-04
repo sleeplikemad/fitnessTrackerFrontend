@@ -16,7 +16,7 @@ const SingleRoutine = ({ allRoutines }) => {
                                 <div key={`routine ${e.name}${e.id}`} className="single-routine-card">
                                     <h2 className="single-routine-title">{e.name}</h2>
                                     <p>{e.goal}</p>
-                                    <p><span className="single-routine-username">{e.creatorName}</span></p>
+                                    <p><span className="single-routine-username">User:{e.creatorName}</span></p>
                                     <Link
                                         className="routine-activity-link"
                                         to="/routines/activities"
