@@ -13,7 +13,6 @@ const SingleRoutine = ({ allRoutines }) => {
                     allRoutines.map((e, idx) => {
 
                         return (
-
                             <div key={`routine ${e.name}${e.id}`} className="single-routine-card">
                                 <h2 className="single-routine-title">{e.name}</h2>
                                 <p>{e.goal}</p>

@@ -15,12 +15,15 @@ import {
   Routines,
   Login,
   Register,
+  Activities,
+  SingleActivity,
   Navbar
 } from './components';
 
 const App = () => {
   const [allRoutines, setAllRoutines] = useState([]);
   const [allActivities, setAllActivities] = useState([])
+  const [allActivityRoutines, setAllActivityRoutines] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
@@ -30,10 +33,12 @@ const App = () => {
     setAllRoutines(routines);
 
     const activities = await fetchAllActivities();
+
     setAllActivities (activities);
     }catch(err){
       console.log(err);
     }
+
   }, []);
 
 
@@ -62,11 +67,18 @@ const App = () => {
         </Route>
         <Route path="/createroutine">
           <CreateRoutine isLoggedIn={isLoggedIn} />
+        </Route>*/}
+
+        <Route path="/activities/routines">
+          <SingleActivity/>
         </Route>
+
         <Route path="/activities">
-          <Activities />
+          <Activities 
+            allActivities={allActivities}/>
         </Route>
-        <Route path="/createactivity">
+        
+        {/*<Route path="/createactivity">
           <CreateActivity isLoggedIn={isLoggedIn} />
         </Route> */}
         <Route path="/login">
@@ -79,7 +91,6 @@ const App = () => {
         <Route path="/register">
           <Register
             isLoggedIn={isLoggedIn}
-
             setIsLoggedIn={setIsLoggedIn}
           />
         </Route>

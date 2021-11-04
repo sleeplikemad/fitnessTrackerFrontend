@@ -44,9 +44,9 @@ export async function fetchUserRoutines(username) {
 export async function fetchAllActivities() {
   try {
     const token = getToken()
-    const { data } = await axios.get(`${BASE}/activities`, {
 
-    });
+    const { data } = await axios.get(`${BASE}/activities`);
+
     console.log("fetchAllActivities: ", data)
     return data;
   } catch (error) {
@@ -134,9 +134,10 @@ export async function updateActivity(
 // na: gets list of public routines that use specified activity
 export async function fetchRoutinesByActivity(activityId) {
   try {
-    const {data} = await axios.get(`${BASE}/activities/${activityId}/routines`);
 
-    console.log("fetchRoutinesByActivity: ")
+    const { data }= await axios.get(`${BASE}/activities/${activityId}/routines`);
+    console.log("fetchRoutinesByActivity: ", data)
+
 
     return data;
   } catch (err) {
@@ -147,7 +148,9 @@ export async function fetchRoutinesByActivity(activityId) {
 // na: gets all public routines
 export async function fetchAllRoutines() {
   try {
-    const { data } = await axios.get(`${BASE}/routines`);
+
+    const token = getToken();
+    const {data} = await axios.get(`${BASE}/routines`);
 
     console.log("fetchAllRoutines: ", data)
     return data;

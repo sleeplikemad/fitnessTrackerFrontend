@@ -1,83 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { fetchAllPosts, deletePostNow, fetchAllPostsByUser } from "../api";
+import { Link, Switch, Route } from 'react-router-dom';
+import { fetchRoutinesByActivity } from '../api';
 
 
-const Posts = ({ isLoggedIn, setCurrentPage, setIsLoading }) => {
-  const [allPosts, setAllPosts] = useState([]);
+const Activities = ({ allActivities }) => {
+    return (
+        <div>
+            {
+                allActivities.length ?
+                    allActivities.map(e => {
 
-  useEffect(async () => {
-    let data;
-    setIsLoading(true);
-    try{
-      if(isLoggedIn) {
-        data = await fetchAllPostsByUser();
-      }
-      else {
-        data = await fetchAllPosts();
-      }
-    }
-    catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-    setAllPosts(data.posts);
-  }, []);
+                        return (
+                            <>
+                                <div key={`activity ${e.name}${e.id}`} className="single-activity-card">
+                                    <h2 className="single-activity-title">{e.name}</h2>
+                                    <p><span>ID: {e.id}</span></p>
+                                    <p><span className="single-activity-description">{e.description}</span></p>
+                                    <Link
+                                        className="routine-activity-link"
+                                        to={{
+                                          pathname: "/activities/routines",
+                                          state : { activity : e }
+                                        }}>
+                                        Let's Go!</Link>
+                                </div>
+                            </>
+                        )
+                    })
+                    : null
+            }
+        </div>
+    )
+}
 
-  return (
-    <div className="posts-main-container">
-      <h2>All Posts</h2>
-      {allPosts.length
-        ? allPosts.map((post) => {
-            return post.active ? 
-              <div className="all-cards">
-                <div key={post._id} className="post-card">
-                  <h3>{post.title}</h3>
-                  <p>{post.description}</p>
-                  <p>{post.price}</p>
-  
-                  {post.isAuthor ? (<button
-                    id="deletePost"
-                    onClick={async (event) => {
-                      event.preventDefault();
-                      try {
-                        const results = await deletePostNow(post._id);
-                      } catch (err) {
-                        console.log(err);
-                      }
-                    }}
-                  >
-                    Delete Post
-                  </button>): null}
-                  {post.isAuthor ? (<button
-                    id="editPost"
-                    onClick={async (event) => {
-                      event.preventDefault();
-                      setCurrentPage({name: "Edit Posts", properties: post})
-                    }}
-                  >
-                    Edit Post
-                  </button>): null}
-                  {( !isLoggedIn || !post.isAuthor) ? <span>
-                    <a
-                      onClick={(event) => {
-                        event.preventDefault();
-                        setCurrentPage({name: "Create Messages", properties: post._id});
-                      }}
-                    >
-                      {" "}
-                      ^^Message the owner about this item^^{" "}
-                    </a>
-                  </span> 
-                  : <div> This is your post </div> }
-
-                </div>
-              </div>
-            : null;
-          })
-        : null}
-    </div>
-  );
-};
-
-export default Posts;
+export default Activities;
