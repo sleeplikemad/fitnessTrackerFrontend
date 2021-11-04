@@ -25,11 +25,15 @@ const App = () => {
 
 
   useEffect(async () => {
+    try{
     const routines = await fetchAllRoutines();
     setAllRoutines(routines);
 
     const activities = await fetchAllActivities();
     setAllActivities (activities);
+    }catch(err){
+      console.log(err);
+    }
   }, []);
 
 
@@ -37,6 +41,7 @@ const App = () => {
     <div id="app">
       <Navbar
         isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
       />
 
       <Switch>

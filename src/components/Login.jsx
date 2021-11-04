@@ -7,6 +7,12 @@ const Login = ({ setIsLoggedIn }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const history = useHistory();
+
+    const handleClick=()=>{
+        history.push('/');
+    }
+
     return (
         <div className="login-main-container">
             <div className="login-left-container">
@@ -25,6 +31,7 @@ const Login = ({ setIsLoggedIn }) => {
                         setIsLoggedIn(true);
                         setUsername('');
                         setPassword('');
+                        handleClick();
                     } catch (err) {
                         console.log(err);
                     }

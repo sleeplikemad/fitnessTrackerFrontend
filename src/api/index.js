@@ -7,7 +7,7 @@ import { getToken } from "../auth";
  * You need to replace YOUR_API_KEY in the string associated with KEY with your actual API key
  */
 
-export const BASE = 'http://fitnesstrac-kr.herokuapp.com/api/'
+export const BASE = 'http://fitnesstrac-kr.herokuapp.com/api'
 
 
 // this is an example for an api call with axios
@@ -45,10 +45,7 @@ export async function fetchAllActivities() {
   try {
     const token = getToken()
     const { data } = await axios.get(`${BASE}/activities`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
+
     });
     console.log("fetchAllActivities: ", data)
     return data;
@@ -61,10 +58,10 @@ export async function fetchAllActivities() {
 export async function registerUser(username, password) {
   try {
     const { data } = await axios.post(`${BASE}/users/register`, {
-      
-        username: username,
-        password: password
-      
+
+      username: username,
+      password: password
+
     });
     console.log("registerUser: ", data)
     return data;
@@ -137,9 +134,9 @@ export async function updateActivity(
 // na: gets list of public routines that use specified activity
 export async function fetchRoutinesByActivity(activityId) {
   try {
-    const response = await axios.get(`${BASE}/activities/${activityId}/routines`);
-    const data = response.data;
-    console.log("fetchRoutinesByActivity: ", data)
+    const {data} = await axios.get(`${BASE}/activities/${activityId}/routines`);
+
+    console.log("fetchRoutinesByActivity: ")
 
     return data;
   } catch (err) {
@@ -150,9 +147,8 @@ export async function fetchRoutinesByActivity(activityId) {
 // na: gets all public routines
 export async function fetchAllRoutines() {
   try {
-    const token = getToken();
-    const response = await axios.get(`${BASE}/routines`);
-    const data = response.data;
+    const { data } = await axios.get(`${BASE}/routines`);
+
     console.log("fetchAllRoutines: ", data)
     return data;
   } catch (err) {
@@ -179,12 +175,12 @@ export async function addRoutine(
   try {
     const token = getToken();
     const { data } = await axios.post(
-      `${BASE}routines`,
+      `${BASE}/routines`,
       {
-          name: name,
-          goal: goal,
-          isPublic: isPublic
-        
+        name: name,
+        goal: goal,
+        isPublic: isPublic
+
       },
       {
         headers: {

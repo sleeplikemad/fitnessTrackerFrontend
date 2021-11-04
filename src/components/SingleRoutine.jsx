@@ -4,35 +4,45 @@ import { Link, Switch, Route } from 'react-router-dom';
 import { SingleRoutineActivity } from './';
 
 const SingleRoutine = ({ allRoutines }) => {
-    const [routineActivity, setRoutineActivity] = useState([])
+    const [routineActivity, setRoutineActivity] = useState([]);
+    const [row, setRow] = useState(1);
     return (
-        <div>
+        <div className="single-routine-main-container">
             {
                 allRoutines.length ?
-                    allRoutines.map(e => {
+                    allRoutines.map((e, idx) => {
 
                         return (
-                            <>
-                                <div key={`routine ${e.name}${e.id}`} className="single-routine-card">
-                                    <h2 className="single-routine-title">{e.name}</h2>
-                                    <p>{e.goal}</p>
-                                    <p><span className="single-routine-username">{e.creatorName}</span></p>
-                                    <Link
-                                        className="routine-activity-link"
-                                        to="/routines/activities"
-                                        onClick={() => { setRoutineActivity(e.activities) }}>
-                                        Let's Go!</Link>
-                                </div>
-                            </>
+
+                            <div key={`routine ${e.name}${e.id}`} className="single-routine-card">
+                                <h2 className="single-routine-title">{e.name}</h2>
+                                <p>{e.goal}</p>
+                                <p><span className="single-routine-username">{e.creatorName}</span></p>
+                                <Link
+                                    className="routine-activity-link"
+                                    to="/routine_activities"
+                                    onClick={() => {
+                                        setRoutineActivity(e.activities);
+                                        console.log(e.activities)
+                                    }}>
+                                    <button className="single-routine-card-button">
+                                        Let's Go <b>></b>
+                                            </button>
+                                </Link>
+                            </div>
+
                         )
                     })
                     : null
             }
             <Switch>
-                <Route exact path="/routines/activities">
+                <Route exact path="/routine_activities">
                     <div className="single-ra-main-container">
-                        <SingleRoutineActivity
-                            allRoutines={routineActivity} />
+                        {routineActivity.length
+                            ? <SingleRoutineActivity
+                                allRoutines={routineActivity} />
+                            : <h2>There are no activities for this routine.</h2>
+                        }
                     </div>
                 </Route>
             </Switch>
