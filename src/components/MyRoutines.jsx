@@ -1,18 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getMyID, fetchUserRoutines } from '../api'
+import { SingleRoutine, CreateRoutine } from './';
 
-import {SingleMyRoutine, CreateRoutine} from './';
+const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
+    const [userRoutines, setUserRoutines] = useState([]);
+    useEffect(async () => {
+        try {
+            const { username } = await getMyID();
+        
+            const routines = await fetchUserRoutines(username);
+            setUserRoutines(routines);
 
-const MyRoutines =({allRoutines, setAllRoutines})=>{
-return(
-    <div>
-    <SingleMyRoutine />
-    
-    <CreateRoutine
-    allRoutines={allRoutines}
-    setAllRoutines ={setAllRoutines}
-    />
-</div>
-)
+        } catch (err) {
+            console.log(err)
+        }
+    }, []);
+
+    return (
+        <div className="my-routines-main-container">
+            {
+                isLoggedIn
+                ? <div className="single-my-routine">
+                 <SingleRoutine
+                allRoutines={userRoutines}
+            />
+
+            <CreateRoutine
+                allRoutines={allRoutines}
+                setAllRoutines={setAllRoutines}
+            />
+            </div>
+            : <h2>You must be logged in to see your routines.</h2>
+            }
+          
+        </div>
+    )
 }
 
 export default MyRoutines;

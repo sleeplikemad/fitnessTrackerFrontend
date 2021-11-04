@@ -6,7 +6,6 @@ const SingleRoutineActivity = ({ allRoutines }) => {
     const pageLocation = useLocation();
     const { activity, name } = pageLocation.state;
     
-
     return (
         <div>
             <h2>Activities for {name}</h2>

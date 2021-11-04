@@ -19,6 +19,7 @@ import {
   SingleActivity,
   Navbar,
   SingleRoutineActivity,
+  MyRoutines,
 } from './components';
 
 const App = () => {
@@ -56,10 +57,14 @@ const App = () => {
             setAllRoutines={setAllRoutines}
           />
         </Route>
-        {/* <Route path="/myroutines">
-          <MyRoutines isLoggedIn={isLoggedIn} />
+        <Route path="/myroutines">
+          <MyRoutines
+            isLoggedIn={isLoggedIn}
+            allRoutines={allRoutines}
+            setAllRoutines={setAllRoutines}
+          />
         </Route>
-        <Route path="/singleroutine">
+        {/* <Route path="/singleroutine">
           <SingleRoutine />
         </Route>
         <Route path="/singlemyroutine">
@@ -67,7 +72,7 @@ const App = () => {
         </Route>
         <Route path="/createroutine">
           <CreateRoutine isLoggedIn={isLoggedIn} />
-        </Route>*/}
+        </Route> */}
         <Route path="/routine_activities">
           <SingleRoutineActivity />
         </Route>
