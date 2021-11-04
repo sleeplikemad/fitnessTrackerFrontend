@@ -135,7 +135,7 @@ export async function updateActivity(
 export async function fetchRoutinesByActivity(activityId) {
   try {
 
-    const { data }= await axios.get(`${BASE}/activities/${activityId}/routines`);
+    const { data } = await axios.get(`${BASE}/activities/${activityId}/routines`);
     console.log("fetchRoutinesByActivity: ", data)
 
 
@@ -150,7 +150,7 @@ export async function fetchAllRoutines() {
   try {
 
     const token = getToken();
-    const {data} = await axios.get(`${BASE}/routines`);
+    const { data } = await axios.get(`${BASE}/routines`);
 
     console.log("fetchAllRoutines: ", data)
     return data;
@@ -163,7 +163,15 @@ export async function fetchAllRoutines() {
 export async function getMyID() {
   try {
     const token = getToken();
-    const { data } = await axios.get(`${BASE}/users/me`);
+    const { data } = await axios.get(`${BASE}/users/me`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        }
+      }
+    );
+    return data;
   } catch (error) {
     throw error;
   }
