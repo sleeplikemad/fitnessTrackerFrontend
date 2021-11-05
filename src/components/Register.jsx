@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, Link } from 'react-router-dom';
 import { registerUser } from "../api";
 import { storeToken } from "../auth";
+import logo from '../images/fitnessTrackerVert.png';
 
 const Register = ({ isLoggedIn, setIsLoggedIn }) => {
   const [userName, setUserName] = useState("");
@@ -21,7 +22,7 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <div className="register-main-container">
        <div className="register-left-container">
-                <h1 className="logo-text">Fitness Tracker</h1>
+       <img className="logo-text" src={logo}/>
             </div>
             <div className="register-right-container">
                 <div className="register-right-inner-container">

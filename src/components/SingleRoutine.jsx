@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 import { getMyID } from '../api';
+import { DeleteRoutineButton } from './';
 
-const SingleRoutine = ({ allRoutines }) => {
+const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
     const [userId, setUserId] = useState('');
 
     useEffect(() => {
@@ -35,9 +36,11 @@ const SingleRoutine = ({ allRoutines }) => {
                                     }}>
                                     Let's Go!
                                 </Link>
+
                                 {
                                     userId === e.creatorId
-                                        ? <Link
+                                        ? <div className="edit-delete"> 
+                                        <Link
                                             className="edit-routine-link"
                                             to={{
                                                 pathname: "/editroutine",
@@ -47,7 +50,17 @@ const SingleRoutine = ({ allRoutines }) => {
                                                     routineGoal: e.goal,
                                                     rIsPublic: e.isPublic
                                                 }
-                                            }}>Edit This Routine</Link>
+                                            }}>
+                                            <button>
+                                                <span class="material-icons">edit</span>
+                                            </button>
+                                        </Link>
+                                            <DeleteRoutineButton
+                                                routineId={e.id}
+                                                allRoutines={allRoutines}
+                                                setAllRoutines={setAllRoutines}
+                                            />
+                                        </div>
                                         : null
                                 }
                             </div>

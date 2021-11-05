@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { storeToken } from '../auth';
-import { loginUser } from '../api'
+import { loginUser } from '../api';
+import logo from '../images/fitnessTrackerVert.png';
 
 const Login = ({ setIsLoggedIn }) => {
     const [username, setUsername] = useState('');
@@ -16,7 +17,7 @@ const Login = ({ setIsLoggedIn }) => {
     return (
         <div className="login-main-container">
             <div className="login-left-container">
-                <h1 className="logo-text">Fitness Tracker</h1>
+                <img className="logo-text" src={logo}/>
             </div>
             <div className="login-right-container">
                 <div className="login-right-inner-container">
@@ -31,8 +32,9 @@ const Login = ({ setIsLoggedIn }) => {
                         setIsLoggedIn(true);
                         setUsername('');
                         setPassword('');
-                        handleClick();
+                        handleClick(); 
                     } catch (err) {
+                        alert('Username or password is incorrect')
                         console.log(err);
                     }
                 }}>
