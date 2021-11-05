@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  useParams,
   Redirect,
   Link
 } from 'react-router-dom';
@@ -21,6 +22,8 @@ import {
   SingleRoutineActivity,
   MyRoutines,
   EditRoutine,
+  CreateActivity,
+  UserRoutines
 } from './components';
 
 const App = () => {
@@ -65,10 +68,13 @@ const App = () => {
             setAllRoutines={setAllRoutines}
           />
         </Route>
-        {/* <Route path="/singleroutine">
-          <SingleRoutine />
+         <Route path="/routinesby/:creatorName">
+          <UserRoutines
+          allRoutines={allRoutines}
+          setAllRoutines={setAllRoutines}
+          />
         </Route>
-        <Route path="/singlemyroutine">
+        {/*<Route path="/singlemyroutine">
           <SingleMyRoutine isLoggedIn={isLoggedIn} />
         </Route>*/}
         <Route path="/editroutine">
@@ -88,6 +94,9 @@ const App = () => {
         <Route path="/activities">
           <Activities
             allActivities={allActivities} />
+            <CreateActivity
+            allActivities={allActivities}
+            setAllActivities={setAllActivities}/>
         </Route>
 
         {/*<Route path="/createactivity">

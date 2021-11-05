@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, Switch, Route } from 'react-router-dom';
 import { fetchRoutinesByActivity } from '../api';
 
-
 const Activities = ({ allActivities }) => {
     return (
         <div>

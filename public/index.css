@@ -7,7 +7,7 @@
     font-family: "Montserrat", sans-serif;
 }
 
-body{
+body {
     background-color: #ececec;
 }
 
@@ -15,12 +15,12 @@ a {
     text-decoration: none;
 }
 
-h2{
+h2 {
     color: #0A2342;
 }
 
 .logo-text {
-  width: 400px;
+    width: 400px;
 }
 
 /* navbar */
@@ -97,17 +97,17 @@ h2{
     height: 100%;  */
     position: fixed;
     color: #ececec;
-    
 }
 
-.header-right-container h2{
+.header-right-container h2 {
     color: #ececec;
 }
 
-.header-right-container h1{
+.header-right-container h1 {
     color: #ececec;
     font-size: 2.8em;
 }
+
 /* login */
 
 .login-main-container {
@@ -258,27 +258,45 @@ h2{
     align-items: center;
     height: 100vh;
     width: 80%;
-    margin-top: 3em;
+    margin-top: 3.5em;
 }
 
 .single-routine-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 300px;
     height: 300px;
     text-align: center;
     margin: .5em;
     padding: 25px;
+    background-color: #0a2342;
 }
 
-.single-routine-card a{
-   color: #ee6352;
-   font-weight: 600;
+.single-routine-card button {
+    color: #ee6352;
+    font-weight: 600;
 }
 
-.single-routine-username{
-text-decoration: underline;
+.single-routine-username {
+    text-decoration: underline;
+    color: #f87060;
+    font-weight: 600;
+    margin: .6em;
+}
+
+.single-routine-title{
+margin: .6em;
+padding: 10px;
+color: #ececec;
+width:250px;
+/* background-color:#13427C; */
+
+}
+
+.single-routine-card p{
+    color: #ececec;
 }
 
 .single-ra-main-container {
@@ -293,17 +311,18 @@ text-decoration: underline;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-   align-items: center;
+    align-items: center;
     justify-content: center;
     margin-top: 3rem;
 }
 
 .routine-activity-link button {
-    background-color: black;
+    background-color: #ee6352;
     color: white;
     margin: 8px 5px;
-    border-radius: 2px;
+    border-radius: 5px;
     padding: 10px;
+    width:100px;
 }
 
 /* create routine */
@@ -326,8 +345,6 @@ text-decoration: underline;
     margin: 1em;
     padding: 10px;
     border-radius: 2px;
-    /* background-color: #82886D; */
-   
 }
 
 .create-routine-form input {
@@ -364,14 +381,27 @@ text-decoration: underline;
     margin: 5px;
 }
 
+/* create activity */
+
+.create-activity-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
 /* various buttons */
-.edit-delete{
+
+.edit-delete {
     margin: 1em;
 }
 
 .material-icons {
     font-family: 'Material Icons';
-    color: #0A2342;
+    color: white;
     padding: 10px;
     font-size: 28px;
-  }
+    background-color:#0A2342 ;
+}

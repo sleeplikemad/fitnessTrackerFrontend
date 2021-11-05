@@ -43,8 +43,7 @@ export async function fetchUserRoutines(username) {
 // na: get's all activities
 export async function fetchAllActivities() {
   try {
-    const token = getToken()
-
+   
     const { data } = await axios.get(`${BASE}/activities`);
 
     console.log("fetchAllActivities: ", data)

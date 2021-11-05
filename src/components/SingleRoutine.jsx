@@ -5,7 +5,6 @@ import { DeleteRoutineButton } from './';
 
 const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
     const [userId, setUserId] = useState('');
-
     useEffect(() => {
         async function getUserInfo() {
             try {
@@ -27,14 +26,21 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                             <div key={`routine ${e.name}${e.id}`} className="single-routine-card">
                                 <h2 className="single-routine-title">{e.name}</h2>
                                 <p>{e.goal}</p>
-                                <p><span className="single-routine-username">{e.creatorName}</span></p>
+                                <Link 
+                                className="single-routine-username"
+                                to={{
+                                    pathname: `/routinesby/${e.creatorName}`,
+                                    state: {creatorName : e.creatorName}
+                                }}
+                                >{e.creatorName}
+                                </Link>
                                 <Link
                                     className="routine-activity-link"
                                     to={{
                                         pathname: "/routine_activities",
                                         state: { activity: e.activities, name: e.name },
                                     }}>
-                                    Let's Go!
+                                    <button>Let's Go!</button>
                                 </Link>
 
                                 {
@@ -52,7 +58,7 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                                                 }
                                             }}>
                                             <button>
-                                                <span class="material-icons">edit</span>
+                                                <span className="material-icons">edit</span>
                                             </button>
                                         </Link>
                                             <DeleteRoutineButton
@@ -63,12 +69,12 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                                         </div>
                                         : null
                                 }
+                
                             </div>
                         )
                     })
                     : null
             }
-
         </div>
     )
 }
