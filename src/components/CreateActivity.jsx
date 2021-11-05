@@ -9,18 +9,27 @@ const CreateActivity = ({ allActivities, setAllActivities, isLoggedIn }) => {
         <div className="create-activity-main-container">
             <h2>Create a New Activity </h2>
             <form
-                className="create-activity-form"
+                className="create-routine-form"
                 onSubmit={async (e) => {
                     e.preventDefault();
                     try {
-                        const newActivity = await addActivities(name, description);
-                        setName('');
-                        setDescription('');
-                     
-                        const allActivitiesCopy = allActivities.slice();
-                        allActivitiesCopy.push(newActivity);
-                        setAllActivities(allActivitiesCopy);
+                        const activityExists = allActivities.filter(activity => {
+                            if (activity.name.toLowerCase() === name.toLowerCase()) {
+                                return activity.name;
+                            }
+                        });
 
+                        if (activityExists.length) {
+                            alert('This activity already exists')
+                        } else {
+                            const newActivity = await addActivities(name, description);
+                            setName('');
+                            setDescription('');
+
+                            const allActivitiesCopy = allActivities.slice();
+                            allActivitiesCopy.push(newActivity);
+                            setAllActivities(allActivitiesCopy);
+                        }
                     } catch (err) {
                         console.log(err);
                     }
