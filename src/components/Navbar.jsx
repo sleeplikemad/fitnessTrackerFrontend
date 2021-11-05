@@ -5,6 +5,16 @@ import logoIcon from '../images/ftLogo.png'
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
 const token = getToken();
+const [navbar, setNavbar]=useState(false);
+
+const toggleBackground =()=>{
+if (window.scrollY >= 80){
+  setNavbar(true);
+}else{
+  setNavbar(false);
+}
+}
+window.addEventListener('scroll', toggleBackground)
 
 useEffect(()=>{
 if (token){
@@ -13,7 +23,7 @@ setIsLoggedIn(true);
 },[])
 
   return (
-    <div className="navbar">
+    <div className={navbar ? 'navbar active' : 'navbar'}>
       <section className="nav-links">
       <img className="nav-logo-icon" src={logoIcon}/>
       <NavLink to="/">Home</NavLink>
