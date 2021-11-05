@@ -18,7 +18,8 @@ const EditRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
 
     return (
         <div className="create-routine-main-container">
-            <h2>Edit My Routine</h2>
+            { isLoggedIn
+           ?<> <h2>Edit My Routine</h2>
             <form
                 className="create-routine-form"
                 onSubmit={async (e) => {
@@ -68,8 +69,11 @@ const EditRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
                     />
                     <p>Make this routine public?</p>
                 </label>
-                <button>Edit Routine</button>
+                <button>Edit My Routine</button>
             </form>
+            </>
+            : <p>You must be logged in to edit a routine.</p>
+}
         </div>
     )
 }

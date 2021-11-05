@@ -7,6 +7,7 @@ const Routines = ({ allRoutines, setAllRoutines }) => {
         <div className="routines-main-container">
             <SingleRoutine
                 allRoutines={allRoutines}
+                setAllRoutines={setAllRoutines}
             />
         </div>
     )

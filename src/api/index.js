@@ -80,10 +80,9 @@ export async function addActivities(
     const { data } = await axios.post(
       `${BASE}/activities`,
       {
-        activity: {
           name: name,
           description: description,
-        },
+        
       },
       {
         headers: {

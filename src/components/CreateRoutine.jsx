@@ -14,9 +14,10 @@ const CreateRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
                 onSubmit={async (e) => {
                     e.preventDefault();
                     try {
-                        // !name ? alert('Please enter a name') : null;
-                        // !goal ? alert('Please enter a goal') : null;
-
+                       if (!name || !goal){
+                           alert('Please be sure to enter a name and goal')
+                       }
+                       
                         const newRoutine = await addRoutine(name, goal, isPublic);
                         setName('');
                         setGoal('');
