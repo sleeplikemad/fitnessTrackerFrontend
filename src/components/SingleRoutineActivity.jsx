@@ -1,23 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { useLocation } from "react-router-dom";
-import {fetchRoutinesByActivity} from "../api"
 
 const SingleRoutineActivity = ({ allRoutines }) => {
     const pageLocation = useLocation();
     const { activity, name } = pageLocation.state;
     
     return (
-        <div>
+        <div className="single-routine-activity-main">
             <h2>Activities for {name}</h2>
             {
             activity.length ?
                 activity.map(e => {
                     return (
-                        <div key={`routine act ${e.id}`}>
+                        <div key={`routine act ${e.id}`}
+                        className="routine-activity-card">
                             <h3>{e.name}</h3>
                             <p>{e.description}</p>
-                            <p>
-                                <span>{e.count} reps</span> | <span>{e.duration} min.</span>
+                            <p className="routine-activity-count">
+                            <span>{e.count} reps</span> | <span>{e.duration} min.</span>
                             </p>
                         </div>
                     )

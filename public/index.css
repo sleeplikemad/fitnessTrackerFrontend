@@ -34,6 +34,12 @@ h2 {
     position: fixed;
     top: 1em;
     width: 100%;
+    height: 80px;
+    background: transparent;
+}
+
+.navbar.active{
+    background: rgba(236,236,236, .6)
 }
 
 .nav-links {
@@ -44,8 +50,8 @@ h2 {
 }
 
 .nav-logo-icon {
-    height: 40px;
-    margin-right: 1em;
+    height: 20px;
+    margin-right: .7em;
 }
 
 .navbar a {
@@ -69,6 +75,7 @@ h2 {
 .header-main-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     align-items: center;
     height: 100vh;
@@ -257,26 +264,21 @@ h2 {
     align-items: center;
     align-items: center;
     height: 100vh;
-    width: 80%;
-    margin-top: 3.5em;
+    width: 100%;
+    margin-top: 3em;
 }
 
 .single-routine-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 450px;
     height: 300px;
     text-align: center;
-    margin: .5em;
+    margin: 1.25em;
     padding: 25px;
     background-color: #0a2342;
-}
-
-.single-routine-card button {
-    color: #ee6352;
-    font-weight: 600;
 }
 
 .single-routine-username {
@@ -284,18 +286,17 @@ h2 {
     color: #f87060;
     font-weight: 600;
     margin: .6em;
+    padding-top: 10px;
 }
 
-.single-routine-title{
-margin: .6em;
-padding: 10px;
-color: #ececec;
-width:250px;
-/* background-color:#13427C; */
-
+.single-routine-title {
+    /* margin: .5em; */
+    padding: 5px;
+    color: #ececec;
+    width: 250px;
 }
 
-.single-routine-card p{
+.single-routine-card p {
     color: #ececec;
 }
 
@@ -317,12 +318,44 @@ width:250px;
 }
 
 .routine-activity-link button {
-    background-color: #ee6352;
+    background-color: #82886d;
     color: white;
     margin: 8px 5px;
     border-radius: 5px;
     padding: 10px;
-    width:100px;
+    width: 100px;
+    font-weight: 600;
+}
+
+/* routine activity */
+.single-routine-activity-main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.single-routine-activity-main h2{
+    margin-bottom: 1em;
+}
+
+.routine-activity-count{
+    color: #ee6352;
+    font-weight: 700;
+}
+
+.routine-activity-card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    background: #0A2342;
+    width: 100%;
+    margin:.5em;
 }
 
 /* create routine */
@@ -403,5 +436,35 @@ width:250px;
     color: white;
     padding: 10px;
     font-size: 28px;
-    background-color:#0A2342 ;
+    background-color: #0A2342;
+}
+
+.get-started{
+background: transparent;
+border: 1px solid #ececec;
+color: #ececec;
+padding: 15px;
+margin: 1em;
+font-weight: 600;
+font-size: 20px;
+border-radius: 5px;
+}
+
+.get-started:hover{
+    box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5)  ; 
+	-webkit-box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5)  ; 
+	-moz-box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5)  ; 
+}
+
+.test-image {
+    height: 300px;
+}
+
+.test-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 300px;
+    padding: 12px;
+    background-color: #0a2342;
 }
