@@ -34,10 +34,10 @@ export async function fetchUserRoutines(username) {
     const token = getToken()
     const { data } = await axios.get(`${BASE}/users/${username}/routines`,{
 
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Authorization": `Bearer ${token}`,
+      // },
 
     });
     return data;

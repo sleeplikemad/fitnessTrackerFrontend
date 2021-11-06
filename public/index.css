@@ -759,3 +759,9 @@ button:hover {
     padding: 12px;
     background-color: #0a2342;
 }
+
+.complete{
+    text-decoration: line-through;
+    text-decoration-color: #F87060;
+    text-decoration-thickness: 5px;
+}

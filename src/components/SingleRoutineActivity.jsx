@@ -3,10 +3,11 @@ import { useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { deleteRoutineActivity, getMyID } from '../api';
 
-const SingleRoutineActivity = ( isLoggedIn ) => {
+const SingleRoutineActivity = ( {isLoggedIn} ) => {
     const pageLocation = useLocation();
     const [userID, setUserID] = useState("")
     const { creatorId, activity, name, routineId, routineGoal, rIsPublic } = pageLocation.state;
+    const [complete, setComplete]=useState(false);
 
     useEffect(() => { 
         async function getUserID() {
@@ -34,11 +35,14 @@ const SingleRoutineActivity = ( isLoggedIn ) => {
                                     <input
                                         type="checkbox"
                                         id="ra-complete"
-                                        value={false}
+                                        value={complete}
+                                        onChange={()=>{
+                                            !complete ?setComplete(true) : setComplete(false);
+                                        }}
                                     />
                                 </div>
                                 <div className="routine-activity-card-right">
-                                <h3>{e.name}</h3>
+                                <h3 className={complete ? 'complete' : null}>{e.name}</h3>
                                 <p>{e.description}</p>
                                 <p className="routine-activity-count">
                                     <span>{e.count} reps</span> | <span>{e.duration} min.</span>   
