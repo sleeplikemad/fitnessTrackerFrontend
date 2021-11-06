@@ -1,13 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { deleteRoutineActivity, getMyID } from '../api';
 
 const SingleRoutineActivity = ( {isLoggedIn} ) => {
     const pageLocation = useLocation();
-    const [userID, setUserID] = useState("")
+    const [userID, setUserID] = useState()
     const { creatorId, activity, name, routineId, routineGoal, rIsPublic } = pageLocation.state;
     const [complete, setComplete]=useState(false);
+
+    const history = useHistory();
+
+    const handleClick = () => {
+        history.push('/myroutines');
+    }
 
     useEffect(() => { 
         async function getUserID() {
@@ -45,44 +51,46 @@ const SingleRoutineActivity = ( {isLoggedIn} ) => {
                                 <h3 className={complete ? 'complete' : null}>{e.name}</h3>
                                 <p>{e.description}</p>
                                 <p className="routine-activity-count">
-                                    <span>{e.count} reps</span> | <span>{e.duration} min.</span>   
+                                    <span>{e.count} reps</span> | <span>{e.duration} min.</span> 
+                                {/* </p>
+                                <p className="routine-activity-edit-buttons">  */}
                                     { userID === creatorId
-                                        ? <span>
-                                        <Link 
-                                            className="edit-activity-link"
-                                            to={{
-                                                pathname: "/editroutineactivity",
-                                                state: {
-                                                    routineActivityId: e.routineActivityId,
-                                                    routineName: name, 
-                                                    routineId: routineId, 
-                                                    id: e.id,
-                                                    name: e.name,
-                                                    description: e.description,
-                                                    duration: e.duration,
-                                                    count: e.count
-                                                }
-                                            }}>
-                                            <button>
-                                                <span className="edit-activity-icon">Edit</span>
+                                        ? 
+                                    <span>
+                                        <span>  
+                                            <Link 
+                                                className="edit-activity-link"
+                                                to={{
+                                                    pathname: "/editroutineactivity",
+                                                    state: {
+                                                        routineActivityId: e.routineActivityId,
+                                                        routineName: name,
+                                                        name: e.name,
+                                                        description: e.description,
+                                                        duration: e.duration,
+                                                        count: e.count
+                                                    }
+                                                }}>
+                                                <button>
+                                                    <span className="edit-activity-icon">Edit</span>
+                                                </button>
+                                            </Link> 
+                                        </span> | 
+                                        <span> 
+                                            <button className="delete-button"
+                                                onClick={async () => {
+                                                    try {
+                                                        await deleteRoutineActivity(e.routineActivityId);
+                                                        handleClick()
+                                                    } catch (err) {
+                                                        console.log(err);
+                                                    }
+                                                }}>
+                                                <span className="edit-activity-icon"> Remove </span> 
                                             </button>
-                                        </Link> 
-                                    </span> | 
-                                    <span> 
-                                        {/* no need for extra component */}
-                                        <button className="delete-button"
-                                            onClick={async () => {
-                                                try {
-                                                    await deleteRoutineActivity(e.routineActivityId);
-
-                                                } catch (err) {
-                                                    console.log(err);
-                                                }
-                                            }}>
-                                            <span className="edit-activity-icon"> Remove </span> 
-                                        </button>
+                                        </span>
                                     </span>
-                                    : null }
+                                    : null }  
                                 </p>
                                 </div>
                             </div>
@@ -92,6 +100,8 @@ const SingleRoutineActivity = ( {isLoggedIn} ) => {
                     : <p>There are no activities for this routine.</p>
             }
             {console.log("LOGGEDIN: ", isLoggedIn)}
+            {console.log("CREATORID: ", creatorId)}
+            {console.log("userid: ", userID)}
             { isLoggedIn && userID === creatorId ? 
             <Link 
                 className="add-activity-link"

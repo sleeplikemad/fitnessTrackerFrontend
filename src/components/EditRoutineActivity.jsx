@@ -8,8 +8,6 @@ const EditRoutineActivity = ({ isLoggedIn }) => {
     const {
         routineActivityId,
         routineName,
-        routineId,
-        id,
         name,
         description,
         duration,
