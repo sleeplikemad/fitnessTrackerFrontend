@@ -32,13 +32,21 @@ export async function loginUser(username, password) {
 export async function fetchUserRoutines(username) {
   try {
     const token = getToken()
-    const { data } = await axios.get(`${BASE}/users/${username}/routines`);
-    console.log("fetchUserRoutines: ", data)
+    const { data } = await axios.get(`${BASE}/users/${username}/routines`,{
+
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+
+    });
     return data;
   } catch (error) {
     throw error;
   }
 }
+
+
 
 // na: get's all activities
 export async function fetchAllActivities() {
@@ -269,13 +277,11 @@ export async function addActivityToRoutine(
   try {
     const token = getToken();
     const { data } = await axios.post(
-      `${BASE}/routines/${routineId}/activities}`,
+      `${BASE}/routines/${routineId}/activities`,
       {
-        routine_activity: {
-          activityId: activityId,
-          count: count,
-          duration: duration
-        },
+        activityId: activityId,
+        count: count,
+        duration: duration
       },
       {
         headers: {
@@ -303,10 +309,8 @@ export async function updateRoutineActivity(
     const { data } = await axios.patch(
       `${BASE}/routine_activities/${routineActivityId}`,
       {
-        routineActivity: {
-          count: count,
-          duration: duration
-        },
+        count: count,
+        duration: duration
       },
       {
         headers: {
@@ -344,3 +348,4 @@ export async function deleteRoutineActivity(
     throw error;
   }
 }
+

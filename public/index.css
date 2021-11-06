@@ -420,6 +420,105 @@ button:hover {
     transform: scale(2);
 }
 
+/* My Routine */
+.my-routines-main-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-items: center;
+    height: 100vh;
+    width: 80%;
+    margin-top: 3.5em;
+}
+
+.my-routines-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+/* activities */
+.single-activity-main-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-items: center;
+    height: 100vh;
+    width: 80%;
+    margin-top: 3.5em;
+}
+
+.single-activity-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    margin: .5em;
+    padding: 25px;
+    background-color: #0a2342;
+}
+
+.single-activity-card button {
+    color: #ee6352;
+    font-weight: 600;
+}
+
+.single-activity-description {
+    margin: .6em;
+    padding: 10px;
+    color: #ececec;
+    width:250px;
+}
+
+.single-activity-title{
+margin: .6em;
+padding: 10px;
+color: #ececec;
+width:250px;
+/* background-color:#13427C; */
+
+}
+
+.single-activity-card p{
+    color: #ececec;
+}
+
+.single-ar-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ececec;
+}
+
+.activities-main-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.activity-routine-link button {
+    background-color: #ee6352;
+    color: white;
+    margin: 8px 5px;
+    border-radius: 5px;
+    padding: 10px;
+    width:100px;
+}
+
 /* create routine */
 
 .create-routine-main-container {
@@ -429,7 +528,6 @@ button:hover {
     align-items: center;
     height: 100vh;
     width: 100%;
-    position: fixed;
 }
 
 .create-routine-form {
@@ -491,6 +589,56 @@ button:hover {
     width: 100%;
 }
 
+/* create routineActivity */
+.italicized {
+    font-style: italic;
+}
+
+.create-routine-activity-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.create-routine-activity-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    margin: 1em;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.create-routine-activity-form input {
+    padding: 10px;
+    margin: 5px;
+    border-bottom: 1px solid lightgrey;
+    background-color: #ececec;
+    color: #0A2342;
+    font-weight: 600;
+}
+
+.create-routine-activity-form select {
+    padding: 10px;
+    margin: 5px;
+    border-bottom: 1px solid lightgrey;
+    background-color: #ececec;
+    color: #0A2342;
+    font-weight: 600;
+}
+
+.create-routine-activity-form button {
+    background-color: #82886D;
+    color: white;
+    margin: 5px;
+    border-radius: 2px;
+    padding: 10px;
+    font-size: 15px;
+  
 .create-activity-main-container h2 {
     color: #82886d;
 }

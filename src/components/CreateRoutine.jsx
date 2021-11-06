@@ -20,14 +20,15 @@ const CreateRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
                             alert('Please be sure to enter a name and goal')
                         }else{
 
-                        const newRoutine = await addRoutine(name, goal, isPublic);
-                        setName('');
-                        setGoal('');
-                        setIsPublic(false);
+                          const newRoutine = await addRoutine(name, goal, isPublic);
+                          setName('');
+                          setGoal('');
+                          setIsPublic(false);
 
-                        const allRoutinesCopy = allRoutines.slice();
-                        allRoutinesCopy.push(newRoutine);
-                        setAllRoutines(allRoutinesCopy);
+                          const allRoutinesCopy = allRoutines.slice();
+                          allRoutinesCopy.push(newRoutine);
+                          setAllRoutines(allRoutinesCopy);
+                          window.location.reload(); //reloads page to populate user's routines upon clicking create
                         }
                     } catch (err) {
                         console.log(err);
