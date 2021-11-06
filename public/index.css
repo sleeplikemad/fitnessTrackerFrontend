@@ -19,6 +19,12 @@ h2 {
     color: #0A2342;
 }
 
+button:hover {
+    -webkit-box-shadow: 4px 2px 9px -.8px #000;
+    box-shadow: 4px 2px 9px -.8px #000;
+    background: #ee6352;
+}
+
 .logo-text {
     width: 400px;
 }
@@ -279,6 +285,9 @@ h2 {
     margin: 1.25em;
     padding: 25px;
     background-color: #0a2342;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
 }
 
 .single-routine-username {
@@ -327,6 +336,12 @@ h2 {
     font-weight: 600;
 }
 
+.routine-activity-link button:hover {
+    background: #F87060;
+    -webkit-box-shadow: 4px 2px 9px -1px #000;
+    box-shadow: 4px 2px 9px -1px #000;
+}
+
 /* routine activity */
 
 .single-routine-activity-main {
@@ -354,15 +369,30 @@ h2 {
 
 .routine-activity-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 10px;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 150px;
+    height: 160px;
 }
 
-.routine-activity-card h3 {
+.routine-activity-card-left {
+    margin-right: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+}
+
+.routine-activity-card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 400px;
+}
+
+.routine-activity-card-right h3 {
     font-size: 25px;
 }
 
@@ -382,8 +412,12 @@ h2 {
     -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
 }
 
-.grey h3{
+.grey h3 {
     color: #ee6352;
+}
+
+.routine-activity-card input[type=checkbox] {
+    transform: scale(2);
 }
 
 /* create routine */
@@ -435,8 +469,8 @@ h2 {
     font-size: 15px;
 }
 
-.create-routine-form p{
-    color:#ececec;
+.create-routine-form p {
+    color: #ececec;
 }
 
 .routine-checkbox {
@@ -457,7 +491,7 @@ h2 {
     width: 100%;
 }
 
-.create-activity-main-container h2{
+.create-activity-main-container h2 {
     color: #82886d;
 }
 
@@ -465,9 +499,32 @@ h2 {
 
 .single-activity-main {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.single-activity-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 30%;
+    height: 100vh;
+    background: #0A2342;
+}
+
+.single-activity-title h2 {
+    color: #ececec;
+}
+
+.single-activity-routine {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1 0 50%;
+    margin-top: 3em;
 }
 
 .activity-main {
@@ -477,11 +534,11 @@ h2 {
     flex-wrap: wrap;
     align-items: center;
     align-items: center;
-    margin-top: 6%;
+    margin-top: 6rem;
     width: 100%;
 }
 
-.activity-card{
+.activity-card {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -493,14 +550,21 @@ h2 {
     text-align: center;
 }
 
-.create-act{
-    background: #0A2342; 
+.create-act {
+    background: #0A2342;
 }
 
-.create-logo{
-    width:80px;
+.create-logo {
+    width: 80px;
     margin-bottom: .6em;
 }
+
+/* my routines */
+
+.single-my-routine {
+    margin-top: 80px;
+}
+
 /* various buttons */
 
 .edit-delete {
