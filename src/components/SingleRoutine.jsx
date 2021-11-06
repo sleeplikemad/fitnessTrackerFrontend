@@ -46,7 +46,14 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                                         className="routine-activity-link"
                                         to={{
                                             pathname: "/routine_activities",
-                                            state: { activity: e.activities, name: e.name },
+                                            state: { 
+                                                creatorId: e.creatorId,
+                                                activity: e.activities, 
+                                                name: e.name, 
+                                                routineId: e.id, 
+                                                routineGoal: e.goal,
+                                                rIsPublic: e.isPublic
+                                            },
                                         }}>
                                         <button>Let's Go!</button>
                                     </Link>
@@ -68,22 +75,6 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                                                 <span className="material-icons">edit</span>
                                             </button>
                                         </Link>
-                                        <Link 
-                                            className="add-activity-link"
-                                            to={{
-                                                pathname: "/addactivity",
-                                                state: {
-                                                    routineId: e.id,
-                                                    routineName: e.name,
-                                                    routineGoal: e.goal,
-                                                    rIsPublic: e.isPublic
-                                                }
-                                            }}>
-                                            <button>
-                                                <span className="add-icon">add</span>
-                                            </button>
-                                        </Link>
-                                
                                             <DeleteRoutineButton
                                                 routineId={e.id}
                                                 allRoutines={allRoutines}
@@ -92,6 +83,7 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                                         </div>
                                         : null
                                 }
+                                </div>
                             </div>
                         )
                     })

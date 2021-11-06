@@ -14,7 +14,7 @@ export { default as Activities } from './Activities';
 export { default as DeleteRoutineButton } from './DeleteRoutineButton';
 export { default as UserRoutines } from './UserRoutines';
 export { default as CreateRoutineActivity } from './CreateRoutineActivity';
-
+export { default as EditRoutineActivity } from './EditRoutineActivity'
 
 
 

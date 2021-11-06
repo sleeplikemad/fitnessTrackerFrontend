@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { addActivityToRoutine } from '../api';
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 
 const CreateRoutineActivity = ({ allActivities, isLoggedIn }) => {
-    const [activityId, setActivityId] = useState('')
+    const [activityId, setActivityId] = useState(allActivities[0].id) 
     const pageLocation = useLocation()
-    const {routineId,
+    const {
+        routineId,
         routineName,
         routineGoal,
         rIsPublic} = pageLocation.state
     const [duration, setDuration] = useState('');
-    const [count, setCount] = useState(false);
+    const [count, setCount] = useState("");
+
+    const history = useHistory();
+
+    const handleClick = () => {
+        history.push('/myroutines');
+    }
 
     return (
         <div className="create-routine-activity-main-container">
@@ -24,16 +31,14 @@ const CreateRoutineActivity = ({ allActivities, isLoggedIn }) => {
                 onSubmit={async (e) => {
                     e.preventDefault();
                     try {
-                       if (!activityId || !duration || !count){
+                        if (!activityId || !duration || !count){
                            alert('Please be sure to select a name and enter a duration and a count')
-                       }
-                       
-                        const newRoutineActivity = await addActivityToRoutine(routineId, activityId, duration, count);
+                        }
+                        await addActivityToRoutine(routineId, activityId, count, duration);
                         setActivityId('');
                         setDuration('');
                         setCount('');
-                        console.log("Submitted")
-
+                        handleClick();
                     } catch (err) {
                         console.log(err);
                     }

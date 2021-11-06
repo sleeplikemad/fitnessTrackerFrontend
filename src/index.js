@@ -8,8 +8,6 @@ import {
   Route,
   Switch,
   useParams,
-  Redirect,
-  Link,
   useLocation,
 } from "react-router-dom";
 
@@ -26,15 +24,14 @@ import {
   EditRoutine,
   CreateActivity,
   UserRoutines,
-  CreateRoutineActivity
+  CreateRoutineActivity,
+  EditRoutineActivity
 } from './components';
 
 const App = () => {
   const [allRoutines, setAllRoutines] = useState([]);
   const [allActivities, setAllActivities] = useState([])
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { creatorName } = useParams();
   const location = useLocation();
   const name = location.pathname.split("/").pop()
 
@@ -45,6 +42,7 @@ const App = () => {
 
       const activities = await fetchAllActivities();
       setAllActivities(activities);
+
     } catch (err) {
       console.log(err);
     }
@@ -78,9 +76,6 @@ const App = () => {
             </div>
           </div>
         </Route>
-        {/*<Route path="/singlemyroutine">
-          <SingleMyRoutine isLoggedIn={isLoggedIn} />
-        </Route>*/}
         <Route path="/editroutine">
           <EditRoutine
            isLoggedIn={isLoggedIn}
@@ -93,8 +88,14 @@ const App = () => {
             isLoggedIn={isLoggedIn}
           />
         </Route>
+        <Route path="/editroutineactivity">
+          <EditRoutineActivity
+            isLoggedIn={isLoggedIn}
+          />
+        </Route>
         <Route path="/routine_activities">
-          <SingleRoutineActivity />
+          <SingleRoutineActivity 
+            isLoggedIn={isLoggedIn} />
         </Route>
 
         <Route path="/activities/routines">
