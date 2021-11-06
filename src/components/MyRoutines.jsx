@@ -6,38 +6,38 @@ const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
     const [userRoutines, setUserRoutines] = useState([]);
 
     useEffect(() => {
-        async function getUserRoutines(){
+        async function getUserRoutines() {
             try {
                 const { username } = await getMyID();
-            
+
                 const routines = await fetchUserRoutines(username);
                 setUserRoutines(routines);
-    
+
             } catch (err) {
                 console.log(err)
             }
         }
-       getUserRoutines();
+        getUserRoutines();
     }, []);
 
     return (
         <div className="my-routines-main-container">
             {
                 isLoggedIn
-                ? <div className="single-my-routine">
-                 <SingleRoutine
-                allRoutines={userRoutines}
-            />
-<div className="create-act">
-            <CreateRoutine
-                allRoutines={allRoutines}
-                setAllRoutines={setAllRoutines}
-            />
-            </div>
-            </div>
-            : <h2>You must be logged in to see your routines.</h2>
+                    ? <div className="single-my-routine">
+                        <SingleRoutine
+                            allRoutines={userRoutines}
+                        />
+                        <div className="create-act">
+                            <CreateRoutine
+                                allRoutines={allRoutines}
+                                setAllRoutines={setAllRoutines}
+                            />
+                        </div>
+                    </div>
+                    : <h2>You must be logged in to see your routines.</h2>
             }
-          
+
         </div>
     )
 }

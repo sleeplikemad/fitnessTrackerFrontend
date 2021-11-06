@@ -18,7 +18,7 @@ const CreateRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
                     try {
                         if (!name || !goal) {
                             alert('Please be sure to enter a name and goal')
-                        }
+                        }else{
 
                         const newRoutine = await addRoutine(name, goal, isPublic);
                         setName('');
@@ -28,7 +28,7 @@ const CreateRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
                         const allRoutinesCopy = allRoutines.slice();
                         allRoutinesCopy.push(newRoutine);
                         setAllRoutines(allRoutinesCopy);
-
+                        }
                     } catch (err) {
                         console.log(err);
                     }

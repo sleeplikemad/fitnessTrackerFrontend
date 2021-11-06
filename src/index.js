@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { fetchAllRoutines, fetchAllActivities } from './api';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import { fetchAllRoutines, fetchAllActivities } from "./api";
 
 // These imports won't work until you fix ./components/index.js
 import {
@@ -9,8 +9,9 @@ import {
   Switch,
   useParams,
   Redirect,
-  Link
-} from 'react-router-dom';
+  Link,
+  useLocation,
+} from "react-router-dom";
 
 import {
   Header,
@@ -24,15 +25,17 @@ import {
   MyRoutines,
   EditRoutine,
   CreateActivity,
-  UserRoutines
-} from './components';
+  UserRoutines,
+} from "./components";
 
 const App = () => {
   const [allRoutines, setAllRoutines] = useState([]);
-  const [allActivities, setAllActivities] = useState([])
-  const [allActivityRoutines, setAllActivityRoutines] = useState([])
+  const [allActivities, setAllActivities] = useState([]);
+  const [allActivityRoutines, setAllActivityRoutines] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const { creatorName } = useParams();
+  const location = useLocation();
+  const name = location.pathname.split("/").pop()
 
   useEffect(async () => {
     try {
@@ -44,23 +47,15 @@ const App = () => {
     } catch (err) {
       console.log(err);
     }
-
   }, []);
-
 
   return (
     <div id="app">
-      <Navbar
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-      />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
       <Switch>
         <Route path="/routines">
-          <Routines
-            allRoutines={allRoutines}
-            setAllRoutines={setAllRoutines}
-          />
+          <Routines allRoutines={allRoutines} setAllRoutines={setAllRoutines} />
         </Route>
         <Route path="/myroutines">
           <MyRoutines
@@ -70,10 +65,17 @@ const App = () => {
           />
         </Route>
         <Route path="/routinesby/:creatorName">
-          <UserRoutines
-            allRoutines={allRoutines}
-            setAllRoutines={setAllRoutines}
-          />
+          <div className="single-activity-main">
+            <div className="single-activity-title">
+              <h2>Routines by {name}</h2>
+            </div>
+            <div className="single-activity-routine">
+              <UserRoutines
+                allRoutines={allRoutines}
+                setAllRoutines={setAllRoutines}
+              />
+            </div>
+          </div>
         </Route>
         {/*<Route path="/singlemyroutine">
           <SingleMyRoutine isLoggedIn={isLoggedIn} />
@@ -82,7 +84,8 @@ const App = () => {
           <EditRoutine
             isLoggedIn={isLoggedIn}
             allRoutines={allRoutines}
-            setAllRoutines={setAllRoutines} />
+            setAllRoutines={setAllRoutines}
+          />
         </Route>
         <Route path="/routine_activities">
           <SingleRoutineActivity />
@@ -94,12 +97,12 @@ const App = () => {
 
         <Route path="/activities">
           <>
-            <Activities
-              allActivities={allActivities} />
+            <Activities allActivities={allActivities} />
             <div className="create-act">
               <CreateActivity
                 allActivities={allActivities}
-                setAllActivities={setAllActivities} />
+                setAllActivities={setAllActivities}
+              />
             </div>
           </>
         </Route>
@@ -108,30 +111,22 @@ const App = () => {
           <CreateActivity isLoggedIn={isLoggedIn} />
         </Route> */}
         <Route path="/login">
-
-          <Login
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-          />
+          <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route path="/register">
-          <Register
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-          />
+          <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route exact path="/">
           <Header />
         </Route>
       </Switch>
     </div>
-  )
-}
-
+  );
+};
 
 ReactDOM.render(
   <Router>
     <App />
   </Router>,
-  document.getElementById('App')
-)
+  document.getElementById("App")
+);

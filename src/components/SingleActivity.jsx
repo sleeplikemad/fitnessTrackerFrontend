@@ -23,14 +23,17 @@ const SingleActivity = ({ }) => {
 
     return (
         <div className="single-activity-main">
-           <div> <h2>Routines that use this Activity</h2></div>
-            <div>
+            <div className="single-activity-title">
+                <h2>Routines that use this Activity</h2>
+            </div>
+            <div className="single-activity-routine">
                 {
-                routines.length ?
-                    <SingleRoutine
-                        allRoutines={routines} />
-                    : <p>None... yet!</p>
-            }</div>
+                    routines.length ?
+                        <SingleRoutine
+                            allRoutines={routines} />
+                        : <p>None... yet!</p>
+                }
+            </div>
         </div>
     )
 }
