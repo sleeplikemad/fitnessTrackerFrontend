@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { storeToken } from '../auth';
-import { loginUser } from '../api';
+import { loginUser, fetchUserRoutines } from '../api';
 import logo from '../images/fitnessTrackerVert.png';
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 

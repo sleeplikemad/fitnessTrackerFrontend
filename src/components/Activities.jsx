@@ -4,7 +4,8 @@ import { fetchRoutinesByActivity } from '../api';
 
 const Activities = ({ allActivities }) => {
     return (
-        <div>
+      <div className="activities-main-container">
+        <div className="single-activity-main-container">
             {
                 allActivities.length ?
                     allActivities.map(e => {
@@ -15,18 +16,19 @@ const Activities = ({ allActivities }) => {
                                     <p><span>ID: {e.id}</span></p>
                                     <p><span className="single-activity-description">{e.description}</span></p>
                                     <Link
-                                        className="routine-activity-link"
+                                        className="activity-routine-link"
                                         to={{
                                           pathname: "/activities/routines",
                                           state : { activity : e }
                                         }}>
-                                        Let's Go!</Link>
+                                        <button>Let's Go!</button></Link>
                                 </div>
                         )
                     })
                     : null
             }
         </div>
+      </div>
     )
 }
 

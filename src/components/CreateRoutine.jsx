@@ -26,6 +26,7 @@ const CreateRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
                         const allRoutinesCopy = allRoutines.slice();
                         allRoutinesCopy.push(newRoutine);
                         setAllRoutines(allRoutinesCopy);
+                        window.location.reload(); //reloads page to populate user's routines upon clicking create
 
                     } catch (err) {
                         console.log(err);

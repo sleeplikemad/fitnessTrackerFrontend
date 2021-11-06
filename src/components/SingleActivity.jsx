@@ -22,8 +22,8 @@ const SingleActivity = ({ }) => {
 
 
     return (
-        <div>
-            <h2>Routines that use this Activity</h2>
+        <div className="single-activity-routine">
+            <h2>Routines for "{activity.name}"</h2>
             <div>{
             routines.length ?
             routines.map(e => {

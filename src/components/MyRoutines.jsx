@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getMyID, fetchUserRoutines } from '../api'
 import { SingleRoutine, CreateRoutine } from './';
 
-const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
+const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn}) => {
     const [userRoutines, setUserRoutines] = useState([]);
     
     useEffect(() => {
@@ -25,7 +25,7 @@ const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
             {
                 isLoggedIn
                 ? <div className="single-my-routine">
-                 <SingleRoutine
+                <SingleRoutine
                 allRoutines={userRoutines}
             />
 
@@ -36,7 +36,6 @@ const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
             </div>
             : <h2>You must be logged in to see your routines.</h2>
             }
-          
         </div>
     )
 }

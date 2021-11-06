@@ -23,13 +23,13 @@ import {
   MyRoutines,
   EditRoutine,
   CreateActivity,
-  UserRoutines
+  UserRoutines,
+  CreateRoutineActivity
 } from './components';
 
 const App = () => {
   const [allRoutines, setAllRoutines] = useState([]);
   const [allActivities, setAllActivities] = useState([])
-  const [allActivityRoutines, setAllActivityRoutines] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
@@ -83,6 +83,12 @@ const App = () => {
            allRoutines={allRoutines}
            setAllRoutines={setAllRoutines} />
         </Route> 
+        <Route path="/addactivity">
+          <CreateRoutineActivity
+            allActivities={allActivities}
+            isLoggedIn={isLoggedIn}
+          />
+        </Route>
         <Route path="/routine_activities">
           <SingleRoutineActivity />
         </Route>
@@ -94,14 +100,15 @@ const App = () => {
         <Route path="/activities">
           <Activities
             allActivities={allActivities} />
-            <CreateActivity
-            allActivities={allActivities}
-            setAllActivities={setAllActivities}/>
         </Route>
 
-        {/*<Route path="/createactivity">
-          <CreateActivity isLoggedIn={isLoggedIn} />
-        </Route> */}
+        <Route path="/createactivity">
+          <CreateActivity
+              allActivities={allActivities}
+              setAllActivities={setAllActivities}
+              isLoggedIn={isLoggedIn}/>
+          <CreateActivity  />
+        </Route> 
         <Route path="/login">
 
           <Login
