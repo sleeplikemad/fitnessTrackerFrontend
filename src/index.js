@@ -23,6 +23,7 @@ import {
   MyRoutines,
   EditRoutine,
   CreateActivity,
+  CreateRoutine,
   UserRoutines,
   CreateRoutineActivity,
   EditRoutineActivity
@@ -57,11 +58,21 @@ const App = () => {
           <Routines allRoutines={allRoutines} setAllRoutines={setAllRoutines} />
         </Route>
         <Route path="/myroutines">
+          <>
+          <div className="single-my-routine">
           <MyRoutines
             isLoggedIn={isLoggedIn}
             allRoutines={allRoutines}
             setAllRoutines={setAllRoutines}
           />
+          </div>
+          <div className="create-act">
+          <CreateRoutine
+          allRoutines={allRoutines}
+          setAllRoutines={setAllRoutines}
+          />
+          </div>
+          </>
         </Route>
         <Route path="/routinesby/:creatorName">
           <div className="single-activity-main">
@@ -106,10 +117,14 @@ const App = () => {
           <>
             <Activities allActivities={allActivities} />
             <div className="create-act">
-              <CreateActivity
+              {
+                isLoggedIn
+            ?  <CreateActivity
                 allActivities={allActivities}
                 setAllActivities={setAllActivities}
               />
+              : null
+}
             </div>
           </>
         </Route>
