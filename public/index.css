@@ -104,8 +104,6 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* flex: 0 1 50%;
-    height: 100%;  */
     position: fixed;
     color: #ececec;
 }
@@ -266,7 +264,6 @@ button:hover {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    /* height: 100vh; */
     width: 100%;
     margin-top: 3em;
 }
@@ -296,7 +293,6 @@ button:hover {
 }
 
 .single-routine-title {
-    /* margin: .5em; */
     padding: 5px;
     color: #ececec;
     width: 250px;
@@ -332,12 +328,6 @@ button:hover {
     width: 100px;
     font-weight: 600;
 }
-
-/* .routine-activity-link button:hover {
-    background: #e93a26;
-    -webkit-box-shadow: 4px 2px 9px -1px #000;
-    box-shadow: 4px 2px 9px -1px #000;
-} */
 
 /* routine activity */
 
@@ -417,6 +407,7 @@ button:hover {
 }
 
 /* My Routine */
+
 .my-routines-main-container {
     margin-top: 6%;
 }
@@ -434,6 +425,7 @@ button:hover {
 }
 
 /* activities */
+
 .single-activity-main-container {
     display: flex;
     justify-content: center;
@@ -464,31 +456,28 @@ button:hover {
     font-weight: 600;
 }
 
-.single-activity-description .blue{
+.single-activity-description .blue {
     margin: .6em;
     padding: 10px;
     color: #ececec;
-    /* color: #0A2342; */
-    width:250px;
+    width: 250px;
 }
 
-.single-activity-description .grey{
+.single-activity-description .grey {
     margin: .6em;
     padding: 10px;
-    color: #0A2342; 
-    width:250px;
+    color: #0A2342;
+    width: 250px;
 }
 
-.single-activity-title{
-margin: 0;
-padding: 10px;
-color: #ececec;
-width:250px;
-/* background-color:#13427C; */
-
+.single-activity-title {
+    margin: 0;
+    padding: 10px;
+    color: #ececec;
+    width: 250px;
 }
 
-.single-activity-card p{
+.single-activity-card p {
     color: #ececec;
 }
 
@@ -515,7 +504,7 @@ width:250px;
     margin: 8px 5px;
     border-radius: 5px;
     padding: 10px;
-    width:100px;
+    width: 100px;
 }
 
 /* create routine */
@@ -589,6 +578,7 @@ width:250px;
 }
 
 /* create routineActivity */
+
 .italicized {
     font-style: italic;
 }
@@ -721,7 +711,7 @@ width:250px;
 
 .material-icons {
     font-family: 'Material Icons';
-    color: white;
+    color: #ee6352;
     padding: 10px;
     font-size: 28px;
     background-color: #0A2342;
@@ -757,8 +747,23 @@ width:250px;
     background-color: #0a2342;
 }
 
-.complete{
+.complete {
     text-decoration: line-through;
     text-decoration-color: #F87060;
     text-decoration-thickness: 5px;
+}
+
+.add-activity-link button {
+    background-color: #ee6352;
+    color: white;
+    margin: 8px 5px;
+    border-radius: 5px;
+    padding: 10px;
+    width: 400px;
+    font-weight: 600;
+    margin: 1.5em;
+}
+
+.white {
+    background: #ececec;
 }

@@ -15,19 +15,20 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
       setNavbar(false);
     }
   }
-  window.addEventListener('scroll', toggleBackground)
+  window.addEventListener('scroll', toggleBackground);
 
   useEffect(() => {
     if (token) {
       setIsLoggedIn(true);
     }
-  })
+  }, []);
+
 
   return (
     <div className={navbar || location.pathname === '/' ? 'navbar active' : 'navbar'}>
       <section className="nav-links">
         <a href="https://joyfoodsunshine.com/the-most-amazing-chocolate-chip-cookies/">
-        <img className="nav-logo-icon" src={logoIcon}/></a>
+          <img className="nav-logo-icon" src={logoIcon} /></a>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/routines">Routines</NavLink>
         <NavLink to="/activities"> Activities</NavLink>

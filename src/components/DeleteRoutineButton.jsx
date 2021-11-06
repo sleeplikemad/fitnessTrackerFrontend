@@ -11,11 +11,13 @@ const DeleteRoutineButton = ({ routineId, allRoutines, setAllRoutines }) => {
                     await deleteRoutine(routineId);
                     const filteredRoutines = allRoutines.filter(routine => {
                         if (routine.id !== routineId) {
-                            return routine
+                            return routine;
                         }
                     });
                     setAllRoutines(filteredRoutines);
+
                     return;
+
                 } catch (err) {
                     console.log(err);
                 }

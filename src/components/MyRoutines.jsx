@@ -4,7 +4,7 @@ import { SingleRoutine } from './';
 
 const MyRoutines = ({ allRoutines, isLoggedIn }) => {
     const [userRoutines, setUserRoutines] = useState([]);
-    
+
     useEffect(() => {
         async function getUserRoutines() {
             try {

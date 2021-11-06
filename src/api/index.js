@@ -1,16 +1,7 @@
 import axios from "axios";
 import { getToken } from "../auth";
 
-/**
- * This file features and exports all of your calls to the API
- * 
- * You need to replace YOUR_API_KEY in the string associated with KEY with your actual API key
- */
-
 export const BASE = 'http://fitnesstrac-kr.herokuapp.com/api'
-
-
-// this is an example for an api call with axios
 
 //na: logs in
 export async function loginUser(username, password) {
@@ -32,14 +23,7 @@ export async function loginUser(username, password) {
 export async function fetchUserRoutines(username) {
   try {
     const token = getToken()
-    const { data } = await axios.get(`${BASE}/users/${username}/routines`,{
-
-      // headers: {
-      //   "Content-Type": "application/json",
-      //   "Authorization": `Bearer ${token}`,
-      // },
-
-    });
+    const { data } = await axios.get(`${BASE}/users/${username}/routines`);
     return data;
   } catch (error) {
     throw error;
@@ -118,10 +102,8 @@ export async function updateActivity(
     const { data } = await axios.patch(
       `${BASE}/activities/${activityId}`,
       {
-        activity: {
           name: name,
           description: description
-        },
       },
       {
         headers: {

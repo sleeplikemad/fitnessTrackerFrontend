@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addRoutine } from '../api';
 import logo from '../images/ftLogoWhite.png';
 
-const CreateRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
+const CreateRoutine = ({ allRoutines, setAllRoutines }) => {
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false);
@@ -18,17 +18,17 @@ const CreateRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
                     try {
                         if (!name || !goal) {
                             alert('Please be sure to enter a name and goal')
-                        }else{
+                        } else {
 
-                          const newRoutine = await addRoutine(name, goal, isPublic);
-                          setName('');
-                          setGoal('');
-                          setIsPublic(false);
+                            const newRoutine = await addRoutine(name, goal, isPublic);
+                            setName('');
+                            setGoal('');
+                            setIsPublic(false);
 
-                          const allRoutinesCopy = allRoutines.slice();
-                          allRoutinesCopy.push(newRoutine);
-                          setAllRoutines(allRoutinesCopy);
-                          window.location.reload(); //reloads page to populate user's routines upon clicking create
+                            const allRoutinesCopy = allRoutines.slice();
+                            allRoutinesCopy.push(newRoutine);
+                            setAllRoutines(allRoutinesCopy);
+
                         }
                     } catch (err) {
                         console.log(err);
