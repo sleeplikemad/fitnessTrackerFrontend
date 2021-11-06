@@ -4,7 +4,7 @@ import { SingleRoutine, CreateRoutine } from './';
 
 const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
     const [userRoutines, setUserRoutines] = useState([]);
-    
+
     useEffect(() => {
         async function getUserRoutines(){
             try {
@@ -28,11 +28,12 @@ const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
                  <SingleRoutine
                 allRoutines={userRoutines}
             />
-
+<div className="create-act">
             <CreateRoutine
                 allRoutines={allRoutines}
                 setAllRoutines={setAllRoutines}
             />
+            </div>
             </div>
             : <h2>You must be logged in to see your routines.</h2>
             }

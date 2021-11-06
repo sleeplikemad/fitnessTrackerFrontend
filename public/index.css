@@ -38,8 +38,8 @@ h2 {
     background: transparent;
 }
 
-.navbar.active{
-    background: rgba(236,236,236, .6)
+.navbar.active {
+    background: rgba(236, 236, 236, .6)
 }
 
 .nav-links {
@@ -328,7 +328,8 @@ h2 {
 }
 
 /* routine activity */
-.single-routine-activity-main{
+
+.single-routine-activity-main {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -339,23 +340,50 @@ h2 {
     width: 100%;
 }
 
-.single-routine-activity-main h2{
+.single-routine-activity-main h2 {
     margin-bottom: 1em;
+    font-size: 35px;
 }
 
-.routine-activity-count{
+.routine-activity-count {
     color: #ee6352;
     font-weight: 700;
+    font-size: 18px;
+    margin-top: 1em;
 }
 
-.routine-activity-card{
+.routine-activity-card {
     display: flex;
     flex-direction: column;
     padding: 10px;
     align-items: center;
-    background: #0A2342;
+    justify-content: center;
     width: 100%;
-    margin:.5em;
+    height: 150px;
+}
+
+.routine-activity-card h3 {
+    font-size: 25px;
+}
+
+.blue {
+    background: #0A2342;
+    color: #ececec;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+}
+
+.grey {
+    background: #ECECEC;
+    color: #0A2342;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+}
+
+.grey h3{
+    color: #ee6352;
 }
 
 /* create routine */
@@ -407,6 +435,10 @@ h2 {
     font-size: 15px;
 }
 
+.create-routine-form p{
+    color:#ececec;
+}
+
 .routine-checkbox {
     display: flex;
     justify-content: center;
@@ -425,6 +457,50 @@ h2 {
     width: 100%;
 }
 
+.create-activity-main-container h2{
+    color: #82886d;
+}
+
+/* activities */
+
+.single-activity-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.activity-main {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-items: center;
+    margin-top: 6%;
+    width: 100%;
+}
+
+.activity-card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    margin: .5em;
+    text-align: center;
+}
+
+.create-act{
+    background: #0A2342; 
+}
+
+.create-logo{
+    width:80px;
+    margin-bottom: .6em;
+}
 /* various buttons */
 
 .edit-delete {
@@ -439,21 +515,21 @@ h2 {
     background-color: #0A2342;
 }
 
-.get-started{
-background: transparent;
-border: 1px solid #ececec;
-color: #ececec;
-padding: 15px;
-margin: 1em;
-font-weight: 600;
-font-size: 20px;
-border-radius: 5px;
+.get-started {
+    background: transparent;
+    border: 1px solid #ececec;
+    color: #ececec;
+    padding: 15px;
+    margin: 1em;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 5px;
 }
 
-.get-started:hover{
-    box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5)  ; 
-	-webkit-box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5)  ; 
-	-moz-box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5)  ; 
+.get-started:hover {
+    box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5);
+    -webkit-box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5);
+    -moz-box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5);
 }
 
 .test-image {
