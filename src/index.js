@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { fetchAllRoutines, fetchAllActivities } from './api';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import { fetchAllRoutines, fetchAllActivities } from "./api";
+
 // These imports won't work until you fix ./components/index.js
 import {
   BrowserRouter as Router,
@@ -8,8 +9,9 @@ import {
   Switch,
   useParams,
   Redirect,
-  Link
-} from 'react-router-dom';
+  Link,
+  useLocation,
+} from "react-router-dom";
 
 import {
   Header,
@@ -30,8 +32,11 @@ import {
 const App = () => {
   const [allRoutines, setAllRoutines] = useState([]);
   const [allActivities, setAllActivities] = useState([])
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { creatorName } = useParams();
+  const location = useLocation();
+  const name = location.pathname.split("/").pop()
 
   useEffect(async () => {
     try {
@@ -43,23 +48,15 @@ const App = () => {
     } catch (err) {
       console.log(err);
     }
-
   }, []);
-
 
   return (
     <div id="app">
-      <Navbar
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-      />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
       <Switch>
         <Route path="/routines">
-          <Routines
-            allRoutines={allRoutines}
-            setAllRoutines={setAllRoutines}
-          />
+          <Routines allRoutines={allRoutines} setAllRoutines={setAllRoutines} />
         </Route>
         <Route path="/myroutines">
           <MyRoutines
@@ -68,11 +65,18 @@ const App = () => {
             setAllRoutines={setAllRoutines}
           />
         </Route>
-         <Route path="/routinesby/:creatorName">
-          <UserRoutines
-          allRoutines={allRoutines}
-          setAllRoutines={setAllRoutines}
-          />
+        <Route path="/routinesby/:creatorName">
+          <div className="single-activity-main">
+            <div className="single-activity-title">
+              <h2>Routines by {name}</h2>
+            </div>
+            <div className="single-activity-routine">
+              <UserRoutines
+                allRoutines={allRoutines}
+                setAllRoutines={setAllRoutines}
+              />
+            </div>
+          </div>
         </Route>
         {/*<Route path="/singlemyroutine">
           <SingleMyRoutine isLoggedIn={isLoggedIn} />
@@ -98,8 +102,15 @@ const App = () => {
         </Route>
 
         <Route path="/activities">
-          <Activities
-            allActivities={allActivities} />
+          <>
+            <Activities allActivities={allActivities} />
+            <div className="create-act">
+              <CreateActivity
+                allActivities={allActivities}
+                setAllActivities={setAllActivities}
+              />
+            </div>
+          </>
         </Route>
 
         <Route path="/createactivity">
@@ -110,30 +121,22 @@ const App = () => {
           <CreateActivity  />
         </Route> 
         <Route path="/login">
-
-          <Login
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-          />
+          <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route path="/register">
-          <Register
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-          />
+          <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route exact path="/">
           <Header />
         </Route>
       </Switch>
     </div>
-  )
-}
-
+  );
+};
 
 ReactDOM.render(
   <Router>
     <App />
   </Router>,
-  document.getElementById('App')
-)
+  document.getElementById("App")
+);

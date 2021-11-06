@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getMyID } from '../api';
 import { DeleteRoutineButton } from './';
+import { images } from './RandomImage'
 
 const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
+    function randomize() {
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+        return randomImage;
+    }
+
     const [userId, setUserId] = useState('');
     useEffect(() => {
         async function getUserInfo() {
@@ -21,30 +27,31 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
         <div className="single-routine-main-container">
             {
                 allRoutines.length ?
-                    allRoutines.map((e, idx) => {
+                    allRoutines.map((e) => {
                         return (
                             <div key={`routine ${e.name}${e.id}`} className="single-routine-card">
-                                <h2 className="single-routine-title">{e.name}</h2>
-                                <p>{e.goal}</p>
-                                <Link 
-                                className="single-routine-username"
-                                to={{
-                                    pathname: `/routinesby/${e.creatorName}`,
-                                    state: {creatorName : e.creatorName}
-                                }}
-                                >{e.creatorName}
-                                </Link>
-                                <Link
-                                    className="routine-activity-link"
-                                    to={{
-                                        pathname: "/routine_activities",
-                                        state: { activity: e.activities, name: e.name },
-                                    }}>
-                                    <button>Let's Go!</button>
-                                </Link>
+                                <img className="test-image" src={randomize()} />
+                                <div className="test-container">
+                                    <h2 className="single-routine-title">{e.name}</h2>
+                                    <p>{e.goal}</p>
+                                    <Link
+                                        className="single-routine-username"
+                                        to={{
+                                            pathname: `/routinesby/${e.creatorName}`,
+                                            state: { creatorName: e.creatorName }
+                                        }}
+                                    >{e.creatorName}
+                                    </Link>
+                                    <Link
+                                        className="routine-activity-link"
+                                        to={{
+                                            pathname: "/routine_activities",
+                                            state: { activity: e.activities, name: e.name },
+                                        }}>
+                                        <button>Let's Go!</button>
+                                    </Link>
 
-                                {
-                                    userId === e.creatorId
+                                { userId === e.creatorId
                                         ? <div className="edit-delete"> 
                                         <Link
                                             className="edit-routine-link"
@@ -85,7 +92,6 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                                         </div>
                                         : null
                                 }
-                
                             </div>
                         )
                     })
