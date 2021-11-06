@@ -1,7 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { deleteRoutine } from '../api';
+import {useHistory} from 'react-router-dom'
 
 const DeleteRoutineButton = ({ routineId, allRoutines, setAllRoutines }) => {
+
+    const handleClick = () => {
+        //unfinished.  figure out reload
+    }
 
     return (
         <button
@@ -15,6 +20,7 @@ const DeleteRoutineButton = ({ routineId, allRoutines, setAllRoutines }) => {
                         }
                     });
                     setAllRoutines(filteredRoutines);
+                    handleClick();
                 } catch (err) {
                     console.log(err);
                 }

@@ -4,8 +4,9 @@ import { SingleRoutine, CreateRoutine } from './';
 
 const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn}) => {
     const [userRoutines, setUserRoutines] = useState([]);
-
-    useEffect(() => {
+    const [reloadMyRoutine, setReloadMyRoutine] = useState(false); // desperate attempt at getting the useEffect to run so the page doesn't load from cache but from a reload
+    
+    useEffect(() => { 
         async function getUserRoutines() {
             try {
                 const { username } = await getMyID();
@@ -18,16 +19,18 @@ const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn}) => {
             }
         }
         getUserRoutines();
-    }, []);
+    }, [allRoutines]);
 
     return (
         <div className="my-routines-main-container">
             {
                 isLoggedIn
                     ? <div className="single-my-routine">
-                        <SingleRoutine
-                            allRoutines={userRoutines}
-                        />
+                        <h2>My Routines</h2>
+                        {userRoutines.length ? <SingleRoutine
+                                allRoutines={userRoutines}
+                            /> : <p className="no-myroutines">You have no routines yet! Scroll down to create one</p>}
+                        
                         <div className="create-act">
                             <CreateRoutine
                                 allRoutines={allRoutines}

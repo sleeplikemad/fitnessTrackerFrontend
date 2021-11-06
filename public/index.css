@@ -473,10 +473,19 @@ button:hover {
     font-weight: 600;
 }
 
-.single-activity-description {
+.single-activity-description .blue{
     margin: .6em;
     padding: 10px;
     color: #ececec;
+    /* color: #0A2342; */
+    width:250px;
+}
+
+.single-activity-description .grey{
+    margin: .6em;
+    padding: 10px;
+    /* color: #ececec; */
+    color: #0A2342; 
     width:250px;
 }
 
@@ -638,7 +647,8 @@ width:250px;
     border-radius: 2px;
     padding: 10px;
     font-size: 15px;
-  
+}
+
 .create-activity-main-container h2 {
     color: #82886d;
 }

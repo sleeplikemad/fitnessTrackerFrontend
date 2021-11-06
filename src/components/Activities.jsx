@@ -30,7 +30,6 @@ const Activities = ({ allActivities }) => {
                     : null
             }
         </div>
-      </div>
     )
 }
 
