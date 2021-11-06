@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { fetchAllRoutines, fetchAllActivities } from "./api";
 
-// These imports won't work until you fix ./components/index.js
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  useParams,
   useLocation,
 } from "react-router-dom";
 
@@ -36,17 +34,20 @@ const App = () => {
   const location = useLocation();
   const name = location.pathname.split("/").pop()
 
-  useEffect(async () => {
-    try {
-      const routines = await fetchAllRoutines();
-      setAllRoutines(routines);
+  useEffect(() => {
+    async function setUp() {
+      try {
+        const routines = await fetchAllRoutines();
+        setAllRoutines(routines);
 
-      const activities = await fetchAllActivities();
-      setAllActivities(activities);
+        const activities = await fetchAllActivities();
+        setAllActivities(activities);
 
-    } catch (err) {
-      console.log(err);
+      } catch (err) {
+        console.log(err);
+      }
     }
+    setUp();
   }, []);
 
   return (
@@ -119,12 +120,12 @@ const App = () => {
             <div className="create-act">
               {
                 isLoggedIn
-            ?  <CreateActivity
-                allActivities={allActivities}
-                setAllActivities={setAllActivities}
-              />
-              : null
-}
+                ?  <CreateActivity
+                    allActivities={allActivities}
+                    setAllActivities={setAllActivities}
+                  />
+                : null
+              }
             </div>
           </>
         </Route>

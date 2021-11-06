@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getMyID, fetchUserRoutines } from '../api'
-import { SingleRoutine, CreateRoutine } from './';
+import { SingleRoutine } from './';
 
-const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
+const MyRoutines = ({ allRoutines, isLoggedIn }) => {
     const [userRoutines, setUserRoutines] = useState([]);
-    const [reloadMyRoutine, setReloadMyRoutine] = useState(false); // desperate attempt at getting the useEffect to run so the page doesn't load from cache but from a reload
-
+    
     useEffect(() => {
         async function getUserRoutines() {
             try {
