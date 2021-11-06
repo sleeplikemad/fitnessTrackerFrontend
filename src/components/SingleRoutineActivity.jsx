@@ -99,9 +99,6 @@ const SingleRoutineActivity = ( {isLoggedIn} ) => {
                     })
                     : <p>There are no activities for this routine.</p>
             }
-            {console.log("LOGGEDIN: ", isLoggedIn)}
-            {console.log("CREATORID: ", creatorId)}
-            {console.log("userid: ", userID)}
             { isLoggedIn && userID === creatorId ? 
             <Link 
                 className="add-activity-link"

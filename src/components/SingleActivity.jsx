@@ -5,8 +5,7 @@ import { fetchRoutinesByActivity } from "../api"
 
 
 
-const SingleActivity = ({ }) => {
-
+const SingleActivity = () => {
     const pageLocation = useLocation();
     const { activity } = pageLocation.state
     const [routines, setRoutines] = useState([])

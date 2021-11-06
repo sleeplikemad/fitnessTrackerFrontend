@@ -2,6 +2,7 @@ import React from 'react';
 import { deleteRoutine } from '../api';
 
 const DeleteRoutineButton = ({ routineId, allRoutines, setAllRoutines }) => {
+
     return (
         <button
             className="delete-button"
@@ -14,6 +15,9 @@ const DeleteRoutineButton = ({ routineId, allRoutines, setAllRoutines }) => {
                         }
                     });
                     setAllRoutines(filteredRoutines);
+
+                    return;
+
                 } catch (err) {
                     console.log(err);
                 }
