@@ -29,6 +29,7 @@ const MyRoutines = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
                         {userRoutines.length
                             ? <SingleRoutine
                                 allRoutines={userRoutines}
+                                setAllRoutines={setAllRoutines}
                             /> : <p className="no-myroutines">You have no routines yet! Scroll down to create one</p>
                         }
 

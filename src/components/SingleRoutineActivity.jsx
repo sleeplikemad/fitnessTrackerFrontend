@@ -3,10 +3,11 @@ import { useLocation, useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { deleteRoutineActivity, getMyID } from '../api';
 
-const SingleRoutineActivity = ( isLoggedIn ) => {
+const SingleRoutineActivity = ( {isLoggedIn} ) => {
     const pageLocation = useLocation();
     const [userID, setUserID] = useState()
     const { creatorId, activity, name, routineId, routineGoal, rIsPublic } = pageLocation.state;
+    const [complete, setComplete]=useState({clickedItem: -1});
 
     const history = useHistory();
 
@@ -40,11 +41,16 @@ const SingleRoutineActivity = ( isLoggedIn ) => {
                                     <input
                                         type="checkbox"
                                         id="ra-complete"
-                                        value={false}
+                                        value={complete}
+                                        onChange={()=>{
+                                            // !complete ?setComplete(true) : setComplete(false);
+                                    
+                                            setComplete({clickedItem : idx})
+                                        }}
                                     />
                                 </div>
                                 <div className="routine-activity-card-right">
-                                <h3>{e.name}</h3>
+                                <h3 className={idx === complete.clickedItem ? 'complete' : null}>{e.name}</h3>
                                 <p>{e.description}</p>
                                 <p className="routine-activity-count">
                                     <span>{e.count} reps</span> | <span>{e.duration} min.</span> 
@@ -68,10 +74,10 @@ const SingleRoutineActivity = ( isLoggedIn ) => {
                                                     }
                                                 }}>
                                                 <button>
-                                                    <span className="edit-activity-icon">Edit</span>
+                                                    <span className="material-icons">edit</span>
                                                 </button>
                                             </Link> 
-                                        </span> | 
+                                        </span>  
                                         <span> 
                                             <button className="delete-button"
                                                 onClick={async () => {
@@ -82,7 +88,7 @@ const SingleRoutineActivity = ( isLoggedIn ) => {
                                                         console.log(err);
                                                     }
                                                 }}>
-                                                <span className="edit-activity-icon"> Remove </span> 
+                                                <span className="material-icons"> delete </span> 
                                             </button>
                                         </span>
                                     </span>
