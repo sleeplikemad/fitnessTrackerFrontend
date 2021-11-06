@@ -22,7 +22,7 @@ const UserRoutines = ({ allRoutines, setAllRoutines }) => {
     }, []);
 
     return (
-        <div className="my-routines-main-container">
+        <div className="user-routines-main-container">
             <div className="single-my-routine">
                 <SingleRoutine
                     allRoutines={userRoutines}
