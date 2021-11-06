@@ -43,9 +43,7 @@ const SingleRoutineActivity = ( {isLoggedIn} ) => {
                                         id="ra-complete"
                                         value={complete}
                                         onChange={()=>{
-                                            // !complete ?setComplete(true) : setComplete(false);
-                                    
-                                            setComplete({clickedItem : idx})
+                                           setComplete({clickedItem : idx})
                                         }}
                                     />
                                 </div>
@@ -74,7 +72,7 @@ const SingleRoutineActivity = ( {isLoggedIn} ) => {
                                                     }
                                                 }}>
                                                 <button>
-                                                    <span className="material-icons">edit</span>
+                                                    <span className={idx%2===1 ? "material-icons white" : "material-icons"}>edit</span>
                                                 </button>
                                             </Link> 
                                         </span>  
@@ -88,7 +86,7 @@ const SingleRoutineActivity = ( {isLoggedIn} ) => {
                                                         console.log(err);
                                                     }
                                                 }}>
-                                                <span className="material-icons"> delete </span> 
+                                                <span className={idx%2===1 ? "material-icons white" : "material-icons"}> delete </span> 
                                             </button>
                                         </span>
                                     </span>

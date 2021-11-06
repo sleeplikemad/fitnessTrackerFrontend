@@ -3,14 +3,14 @@ import { addActivityToRoutine } from '../api';
 import { useLocation, useHistory } from "react-router-dom";
 
 
-const CreateRoutineActivity = ({ allActivities, isLoggedIn }) => {
-    const [activityId, setActivityId] = useState(allActivities[0].id) 
-    const pageLocation = useLocation()
+const CreateRoutineActivity = ({ allActivities }) => {
+    const [activityId, setActivityId] = useState(allActivities[0].id);
+    const pageLocation = useLocation();
     const {
         routineId,
         routineName,
         routineGoal,
-        rIsPublic} = pageLocation.state
+        rIsPublic } = pageLocation.state;
     const [duration, setDuration] = useState('');
     const [count, setCount] = useState("");
 
@@ -31,8 +31,8 @@ const CreateRoutineActivity = ({ allActivities, isLoggedIn }) => {
                 onSubmit={async (e) => {
                     e.preventDefault();
                     try {
-                        if (!activityId || !duration || !count){
-                           alert('Please be sure to select a name and enter a duration and a count')
+                        if (!activityId || !duration || !count) {
+                            alert('Please be sure to select a name and enter a duration and a count');
                         }
                         await addActivityToRoutine(routineId, activityId, count, duration);
                         setActivityId('');
@@ -44,18 +44,19 @@ const CreateRoutineActivity = ({ allActivities, isLoggedIn }) => {
                     }
                 }}>
                 {/* NAME INPUT */}
-                <label for="routine-activity-name">Choose an activity:</label>
+                <label htmlFor="routine-activity-name">Choose an activity:</label>
                 <select id="routine-activity-name" name="routine-activity-name" onChange={(e) => setActivityId(e.target.value)}>
                     {
                         allActivities.map((e) => {
                             return (
                                 <option value={e.id}>{e.name}</option>
-                            )})
+                            )
+                        })
                     }
                 </select>
 
                 {/* DURATION INPUT */}
-                <label for="routine-activity-duration">Duration(in minutes): </label>
+                <label htmlFor="routine-activity-duration">Duration(in minutes): </label>
                 <input
                     type="number"
                     name="routine-activity-duration"
@@ -64,7 +65,7 @@ const CreateRoutineActivity = ({ allActivities, isLoggedIn }) => {
                     onChange={(e) => setDuration(e.target.value)}
                     placeholder="0" />
                 {/* COUNT INPUT */}
-                <label for="routine-activity-count">Count(in reps): </label>
+                <label htmlFor="routine-activity-count">Count(in reps): </label>
                 <input
                     type="number"
                     name="routine-activity-count"

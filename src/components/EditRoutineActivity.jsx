@@ -3,7 +3,7 @@ import { updateRoutineActivity} from '../api';
 import { useLocation, useHistory } from "react-router-dom";
 
 
-const EditRoutineActivity = ({ isLoggedIn }) => {
+const EditRoutineActivity = ({ isLoggedIn, allActivities, setAllActivities }) => {
     const pageLocation = useLocation()
     const {
         routineActivityId,
@@ -37,13 +37,14 @@ const EditRoutineActivity = ({ isLoggedIn }) => {
                         setNewDuration('');
                         setNewCount('');
                         handleClick();
+                        
                     } catch (err) {
                         console.log(err);
                     }
                 }}>
 
                 {/* DURATION INPUT */}
-                <label for="routine-activity-duration">Duration(in minutes): </label>
+                <label htmlFor="routine-activity-duration">Duration(in minutes): </label>
                 <input
                     type="number"
                     name="routine-activity-duration"

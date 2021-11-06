@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { fetchAllRoutines, fetchAllActivities } from "./api";
 
-// These imports won't work until you fix ./components/index.js
 import {
   BrowserRouter as Router,
   Route,
@@ -26,7 +25,8 @@ import {
   CreateRoutine,
   UserRoutines,
   CreateRoutineActivity,
-  EditRoutineActivity
+  EditRoutineActivity,
+  EditActivity,
 } from './components';
 
 const App = () => {
@@ -34,7 +34,7 @@ const App = () => {
   const [allActivities, setAllActivities] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
-  const name = location.pathname.split("/").pop()
+  const name = location.pathname.split("/").pop();
 
   useEffect(async () => {
     try {
@@ -58,21 +58,24 @@ const App = () => {
           <Routines allRoutines={allRoutines} setAllRoutines={setAllRoutines} />
         </Route>
         <Route path="/myroutines">
-          <>
-          <div className="single-my-routine">
-          <MyRoutines
-            isLoggedIn={isLoggedIn}
-            allRoutines={allRoutines}
-            setAllRoutines={setAllRoutines}
-          />
-          </div>
-          <div className="create-act">
-          <CreateRoutine
-          allRoutines={allRoutines}
-          setAllRoutines={setAllRoutines}
-          />
-          </div>
-          </>
+          {isLoggedIn
+            ? <>
+              <div className="single-my-routine">
+                <MyRoutines
+                  isLoggedIn={isLoggedIn}
+                  allRoutines={allRoutines}
+                  setAllRoutines={setAllRoutines}
+                />
+              </div>
+              <div className="create-act">
+                <CreateRoutine
+                  allRoutines={allRoutines}
+                  setAllRoutines={setAllRoutines}
+                />
+              </div>
+            </>
+            : null
+          }
         </Route>
         <Route path="/routinesby/:creatorName">
           <div className="single-activity-main">
@@ -88,25 +91,38 @@ const App = () => {
           </div>
         </Route>
         <Route path="/editroutine">
-          <EditRoutine
-           isLoggedIn={isLoggedIn}
-           allRoutines={allRoutines}
-           setAllRoutines={setAllRoutines} />
-        </Route> 
+          {isLoggedIn
+            ? <EditRoutine
+              isLoggedIn={isLoggedIn}
+              allRoutines={allRoutines}
+              setAllRoutines={setAllRoutines} />
+            : null
+          }
+        </Route>
         <Route path="/addactivity">
-          <CreateRoutineActivity
-            allActivities={allActivities}
-            isLoggedIn={isLoggedIn}
-          />
+          {isLoggedIn
+            ? <CreateRoutineActivity
+              allActivities={allActivities}
+              isLoggedIn={isLoggedIn}
+            />
+            : null
+          }
         </Route>
         <Route path="/editroutineactivity">
-          <EditRoutineActivity
-            isLoggedIn={isLoggedIn}
-          />
+          {isLoggedIn
+            ? <EditRoutineActivity
+              isLoggedIn={isLoggedIn}
+              allActivities={allActivities}
+              setAllActivities={setAllActivities}
+            />
+            : null
+          }
         </Route>
         <Route path="/routine_activities">
-          <SingleRoutineActivity 
-            isLoggedIn={isLoggedIn} />
+          <SingleRoutineActivity
+            isLoggedIn={isLoggedIn}
+            allActivities={allRoutines}
+            setAllActivities={setAllActivities} />
         </Route>
 
         <Route path="/activities/routines">
@@ -115,27 +131,38 @@ const App = () => {
 
         <Route path="/activities">
           <>
-            <Activities allActivities={allActivities} />
+            <Activities allActivities={allActivities}
+              isLoggedIn={isLoggedIn} />
             <div className="create-act">
               {
                 isLoggedIn
-            ?  <CreateActivity
-                allActivities={allActivities}
-                setAllActivities={setAllActivities}
-              />
-              : null
-}
+                  ? <CreateActivity
+                    allActivities={allActivities}
+                    setAllActivities={setAllActivities}
+                  />
+                  : null
+              }
             </div>
           </>
         </Route>
 
-        <Route path="/createactivity">
+        {/* <Route path="/createactivity">
           <CreateActivity
+            allActivities={allActivities}
+            setAllActivities={setAllActivities}
+            isLoggedIn={isLoggedIn} />
+        </Route> */}
+
+        <Route path="/editactivity">
+          {isLoggedIn
+            ? <EditActivity
               allActivities={allActivities}
               setAllActivities={setAllActivities}
-              isLoggedIn={isLoggedIn}/>
-          <CreateActivity  />
-        </Route> 
+            />
+            : null
+          }
+        </Route>
+
         <Route path="/login">
           <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
