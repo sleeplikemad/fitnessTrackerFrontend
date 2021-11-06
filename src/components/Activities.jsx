@@ -4,15 +4,15 @@ import { fetchRoutinesByActivity } from '../api';
 
 const Activities = ({ allActivities }) => {
     return (
-        <div>
+        <div className="activity-main">
             {
                 allActivities.length ?
-                    allActivities.map(e => {
+                    allActivities.map((e,idx) => {
 
                         return (
-                                <div key={`activity ${e.name}${e.id}`} className="single-activity-card">
-                                    <h2 className="single-activity-title">{e.name}</h2>
-                                    <p><span>ID: {e.id}</span></p>
+                                <div key={`activity ${e.name}${e.id}`} 
+                                className={idx%2===0 ? "activity-card blue" : "activity-card grey"}>
+                                    <h3>{e.name}</h3>
                                     <p><span className="single-activity-description">{e.description}</span></p>
                                     <Link
                                         className="routine-activity-link"
@@ -20,7 +20,8 @@ const Activities = ({ allActivities }) => {
                                           pathname: "/activities/routines",
                                           state : { activity : e }
                                         }}>
-                                        Let's Go!</Link>
+                                        <button>Let's Go!</button>
+                                        </Link>
                                 </div>
                         )
                     })

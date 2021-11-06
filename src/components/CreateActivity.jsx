@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { addActivities } from '../api';
+import logo from '../images/ftLogoWhite.png';
 
 const CreateActivity = ({ allActivities, setAllActivities, isLoggedIn }) => {
     const [name, setName] = useState('');
@@ -7,6 +8,7 @@ const CreateActivity = ({ allActivities, setAllActivities, isLoggedIn }) => {
 
     return (
         <div className="create-activity-main-container">
+<img className='create-logo' src={logo}/>
             <h2>Create a New Activity </h2>
             <form
                 className="create-routine-form"

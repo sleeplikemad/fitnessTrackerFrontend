@@ -10,10 +10,10 @@ const SingleRoutineActivity = ({ allRoutines }) => {
             <h2>Activities for {name}</h2>
             {
             activity.length ?
-                activity.map(e => {
+                activity.map((e, idx) => {
                     return (
                         <div key={`routine act ${e.id}`}
-                        className="routine-activity-card">
+                        className={idx%2===0 ? "routine-activity-card blue" : "routine-activity-card grey"}>
                             <h3>{e.name}</h3>
                             <p>{e.description}</p>
                             <p className="routine-activity-count">

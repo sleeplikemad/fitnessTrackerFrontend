@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import { SingleRoutine } from './';
 import { useLocation } from "react-router-dom"
-import {fetchRoutinesByActivity} from "../api"
+import { fetchRoutinesByActivity } from "../api"
 
 
 
@@ -14,7 +14,7 @@ const SingleActivity = ({ }) => {
     useEffect(() => {
         async function setUp() {
             const temp = await fetchRoutinesByActivity(activity.id)
-            if(temp)
+            if (temp)
                 setRoutines(temp)
         }
         setUp()
@@ -22,23 +22,15 @@ const SingleActivity = ({ }) => {
 
 
     return (
-        <div>
-            <h2>Routines that use this Activity</h2>
-            <div>{
-            routines.length ?
-            routines.map(e => {
-                    return (
-                        <div key={`routine ${e.id}`} className="activity-routine-card">
-                            <h3>{e.name}</h3>
-                            <p>Goal: {e.goal}</p>
-                            <p>
-                                <span>Creator: {e.creatorName}</span>
-                            </p>
-                        </div>
-                    )
-                })
-                : <p>None... yet!</p>
-        }</div>
+        <div className="single-activity-main">
+           <div> <h2>Routines that use this Activity</h2></div>
+            <div>
+                {
+                routines.length ?
+                    <SingleRoutine
+                        allRoutines={routines} />
+                    : <p>None... yet!</p>
+            }</div>
         </div>
     )
 }

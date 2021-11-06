@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { fetchAllRoutines, fetchAllActivities } from './api';
+
 // These imports won't work until you fix ./components/index.js
 import {
   BrowserRouter as Router,
@@ -68,10 +69,10 @@ const App = () => {
             setAllRoutines={setAllRoutines}
           />
         </Route>
-         <Route path="/routinesby/:creatorName">
+        <Route path="/routinesby/:creatorName">
           <UserRoutines
-          allRoutines={allRoutines}
-          setAllRoutines={setAllRoutines}
+            allRoutines={allRoutines}
+            setAllRoutines={setAllRoutines}
           />
         </Route>
         {/*<Route path="/singlemyroutine">
@@ -79,10 +80,10 @@ const App = () => {
         </Route>*/}
         <Route path="/editroutine">
           <EditRoutine
-           isLoggedIn={isLoggedIn}
-           allRoutines={allRoutines}
-           setAllRoutines={setAllRoutines} />
-        </Route> 
+            isLoggedIn={isLoggedIn}
+            allRoutines={allRoutines}
+            setAllRoutines={setAllRoutines} />
+        </Route>
         <Route path="/routine_activities">
           <SingleRoutineActivity />
         </Route>
@@ -92,11 +93,15 @@ const App = () => {
         </Route>
 
         <Route path="/activities">
-          <Activities
-            allActivities={allActivities} />
-            <CreateActivity
-            allActivities={allActivities}
-            setAllActivities={setAllActivities}/>
+          <>
+            <Activities
+              allActivities={allActivities} />
+            <div className="create-act">
+              <CreateActivity
+                allActivities={allActivities}
+                setAllActivities={setAllActivities} />
+            </div>
+          </>
         </Route>
 
         {/*<Route path="/createactivity">

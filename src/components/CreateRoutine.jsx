@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { addRoutine } from '../api';
+import logo from '../images/ftLogoWhite.png';
 
 const CreateRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
     const [name, setName] = useState('');
@@ -7,17 +8,18 @@ const CreateRoutine = ({ allRoutines, setAllRoutines, isLoggedIn }) => {
     const [isPublic, setIsPublic] = useState(false);
 
     return (
-        <div className="create-routine-main-container">
+        <div className="create-activity-main-container">
+            <img className='create-logo' src={logo} />
             <h2>Create a new routine </h2>
             <form
                 className="create-routine-form"
                 onSubmit={async (e) => {
                     e.preventDefault();
                     try {
-                       if (!name || !goal){
-                           alert('Please be sure to enter a name and goal')
-                       }
-                       
+                        if (!name || !goal) {
+                            alert('Please be sure to enter a name and goal')
+                        }
+
                         const newRoutine = await addRoutine(name, goal, isPublic);
                         setName('');
                         setGoal('');
