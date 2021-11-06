@@ -21,8 +21,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
     if (token) {
       setIsLoggedIn(true);
     }
-
-  }, [])
+  })
 
   return (
     <div className={navbar || location.pathname === '/' ? 'navbar active' : 'navbar'}>

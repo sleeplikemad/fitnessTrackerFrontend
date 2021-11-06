@@ -3,7 +3,7 @@ import { addActivityToRoutine } from '../api';
 import { useLocation, useHistory } from "react-router-dom";
 
 
-const CreateRoutineActivity = ({ allActivities, isLoggedIn }) => {
+const CreateRoutineActivity = ({ allActivities, isLoggedIn , allRoutines, setAllRoutines}) => {
     const [activityId, setActivityId] = useState(allActivities[0].id) 
     const pageLocation = useLocation()
     const {
@@ -38,6 +38,8 @@ const CreateRoutineActivity = ({ allActivities, isLoggedIn }) => {
                         setActivityId('');
                         setDuration('');
                         setCount('');
+                        const allRoutinesCopy = allRoutines.slice();
+                        setAllRoutines(allRoutinesCopy); //reloads allroutines to trigger state change?  but same # of routines
                         handleClick();
                     } catch (err) {
                         console.log(err);
