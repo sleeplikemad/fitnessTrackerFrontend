@@ -17,7 +17,6 @@ a {
 
 h2 {
     color: #0A2342;
-    text-align: center;
 }
 
 button:hover {
@@ -269,9 +268,10 @@ button:hover {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    /* height: 100vh; */
+    align-items: center;
+    height: 100vh;
     width: 100%;
-    margin: 3em 0;
+    margin-top: 3em;
 }
 
 .single-routine-card {
@@ -421,12 +421,7 @@ button:hover {
 }
 
 /* My Routine */
-
 .my-routines-main-container {
-    margin-top: 6%;
-}
-
-.user-routines-main-container {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -434,12 +429,20 @@ button:hover {
     align-items: center;
     align-items: center;
     height: 100vh;
-    width: 100%;
-    margin-top: 1em;
+    width: 80%;
+    margin-top: 3.5em;
+}
+
+.my-routines-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
 }
 
 /* activities */
-
 .single-activity-main-container {
     display: flex;
     justify-content: center;
@@ -470,31 +473,31 @@ button:hover {
     font-weight: 600;
 }
 
-.single-activity-description .blue {
+.single-activity-description .blue{
     margin: .6em;
     padding: 10px;
     color: #ececec;
     /* color: #0A2342; */
-    width: 250px;
+    width:250px;
 }
 
-.single-activity-description .grey {
+.single-activity-description .grey{
     margin: .6em;
     padding: 10px;
-    /* color: #ececec; */
-    color: #0A2342;
-    width: 250px;
+    color: #0A2342; 
+    width:250px;
 }
 
-.single-activity-title {
-    margin: .6em;
-    padding: 10px;
-    color: #ececec;
-    width: 250px;
-    /* background-color:#13427C; */
+.single-activity-title{
+margin: .6em;
+padding: 10px;
+color: #ececec;
+width:250px;
+/* background-color:#13427C; */
+
 }
 
-.single-activity-card p {
+.single-activity-card p{
     color: #ececec;
 }
 
@@ -521,7 +524,7 @@ button:hover {
     margin: 8px 5px;
     border-radius: 5px;
     padding: 10px;
-    width: 100px;
+    width:100px;
 }
 
 /* create routine */
@@ -595,7 +598,6 @@ button:hover {
 }
 
 /* create routineActivity */
-
 .italicized {
     font-style: italic;
 }
@@ -667,7 +669,6 @@ button:hover {
     flex: 1 0 30%;
     height: 100vh;
     background: #0A2342;
-    margin: 0;
 }
 
 .single-activity-title h2 {
@@ -708,7 +709,6 @@ button:hover {
 
 .create-act {
     background: #0A2342;
-    margin-top: 1em;
 }
 
 .create-logo {
@@ -718,9 +718,9 @@ button:hover {
 
 /* my routines */
 
-/* .single-my-routine {
-   height: 100vh;
-} */
+.single-my-routine {
+    margin-top: 80px;
+}
 
 /* various buttons */
 
@@ -745,6 +745,12 @@ button:hover {
     font-weight: 600;
     font-size: 20px;
     border-radius: 5px;
+}
+
+.get-started:hover {
+    box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5);
+    -webkit-box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5);
+    -moz-box-shadow: 5px 5px 20px rgba(130, 136, 109, 0.5);
 }
 
 .test-image {
