@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addRoutine } from '../api';
 import logo from '../images/ftLogoWhite.png';
 
-const CreateRoutine = ({ allRoutines, setAllRoutines }) => {
+const CreateRoutine = ({ setAllRoutines }) => {
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false);
