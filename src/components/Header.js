@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import headerImage from '../images/headerImage.jpeg';
 
-const Header = (props) => {
+const Header = () => {
     const history = useHistory();
 
     const handleClick = () => {

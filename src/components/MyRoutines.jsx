@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getMyID, fetchUserRoutines } from '../api';
 import { SingleRoutine } from './';
 
-const MyRoutines = ({ allRoutines, isLoggedIn, setAllRoutines }) => {
+const MyRoutines = ({ isLoggedIn, setAllRoutines }) => {
     const [userRoutines, setUserRoutines] = useState([]);
 
     useEffect(() => {
