@@ -779,3 +779,9 @@ button:hover {
 .white {
     background: #ececec;
 }
+
+.auto-scroll{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1em;
+}

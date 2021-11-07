@@ -11,11 +11,10 @@ const UserRoutines = ({ allRoutines, setAllRoutines }) => {
     useEffect(() => {
         async function getUserRoutines() {
             try {
-                const routines = await fetchUserRoutines(creatorName);
+                const routines = allRoutines.filter(e => e.creatorName === creatorName);
                 setUserRoutines(routines);
-
             } catch (err) {
-                console.log(err)
+                console.log(err);
             }
         }
         getUserRoutines();
