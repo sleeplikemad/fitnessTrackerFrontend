@@ -17,6 +17,7 @@ a {
 
 h2 {
     color: #0A2342;
+    text-align: center;
 }
 
 button:hover {
@@ -410,6 +411,10 @@ button:hover {
 
 .my-routines-main-container {
     margin-top: 6%;
+}
+
+.no-myroutines{
+    margin:1em;
 }
 
 .user-routines-main-container {

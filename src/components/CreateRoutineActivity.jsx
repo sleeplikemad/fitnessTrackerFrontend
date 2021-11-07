@@ -5,7 +5,6 @@ import { useLocation, useHistory } from "react-router-dom";
 const CreateRoutineActivity = ({ allActivities }) => {
     const [activityId, setActivityId] = useState(allActivities[0].id);
     const pageLocation = useLocation();
-
     const {
         routineId,
         routineName,
@@ -38,8 +37,6 @@ const CreateRoutineActivity = ({ allActivities }) => {
                         setActivityId('');
                         setDuration('');
                         setCount('');
-                        const allRoutinesCopy = allRoutines.slice();
-                        setAllRoutines(allRoutinesCopy); //reloads allroutines to trigger state change?  but same # of routines
                         handleClick();
                     } catch (err) {
                         console.log(err);

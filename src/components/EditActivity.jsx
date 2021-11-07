@@ -3,7 +3,7 @@ import { updateActivity } from '../api';
 import { useLocation, useHistory } from 'react-router-dom';
 import logo from '../images/ftLogoWhite.png';
 
-const EditActivity = ({ allActivities, setAllActivities, isLoggedIn }) => {
+const EditActivity = ({ allActivities, setAllActivities }) => {
     const pageLocation = useLocation();
     const { activity } = pageLocation.state;
     const [name, setName] = useState(activity.name);
@@ -24,10 +24,15 @@ const EditActivity = ({ allActivities, setAllActivities, isLoggedIn }) => {
                     e.preventDefault();
                     try {
                         const updatedActivity = await updateActivity(name, description, activity.id);
-
-                        const allActivitiesCopy = allActivities.slice();
-                        allActivitiesCopy.push(updatedActivity);
-                        setAllActivities(allActivitiesCopy);
+                        const filteredActvities = allActivities.filter(e=>{
+                            if (e.id !== updatedActivity.id){
+                                return e;
+                            }
+                        })
+                        // const allActivitiesCopy = allActivities.slice();
+                        // allActivitiesCopy.push(updatedActivity);
+                        console.log(updatedActivity.id, "!!!!!")
+                        setAllActivities([...filteredActvities, updatedActivity]);
                         handleClick();
                     } catch (err) {
                         console.log(err);

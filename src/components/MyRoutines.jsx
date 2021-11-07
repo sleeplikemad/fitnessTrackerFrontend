@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getMyID, fetchUserRoutines } from '../api'
+import { getMyID, fetchUserRoutines } from '../api';
 import { SingleRoutine } from './';
 
 const MyRoutines = ({ allRoutines, isLoggedIn }) => {
@@ -12,7 +12,7 @@ const MyRoutines = ({ allRoutines, isLoggedIn }) => {
 
                 const routines = await fetchUserRoutines(username);
                 setUserRoutines(routines);
-
+console.log (routines, "!!!")
             } catch (err) {
                 console.log(err)
             }
@@ -29,7 +29,7 @@ const MyRoutines = ({ allRoutines, isLoggedIn }) => {
                             ? <SingleRoutine
                                 allRoutines={userRoutines}
                                 setAllRoutines={setAllRoutines}
-                            /> : <p className="no-myroutines">You have no routines yet! Scroll down to create one</p>
+                            /> : <h2 className="no-myroutines">You have no routines yet!</h2>
                         }
 
                     </div>
