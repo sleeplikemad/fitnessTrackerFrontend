@@ -1,7 +1,7 @@
 import React from 'react';
 import { deleteRoutine } from '../api';
 
-const DeleteRoutineButton = ({ routineId, setAllRoutines }) => {
+const DeleteRoutineButton = ({ routineId, setAllRoutines, allRoutines }) => {
     return (
         <button
             className="delete-button"

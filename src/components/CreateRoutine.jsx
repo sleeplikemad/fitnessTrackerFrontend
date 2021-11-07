@@ -19,13 +19,11 @@ const CreateRoutine = ({ setAllRoutines, allRoutines }) => {
                         if (!name || !goal) {
                             alert('Please be sure to enter a name and goal')
                         } else {
-
                             const newRoutine = await addRoutine(name, goal, isPublic);
                             setName('');
                             setGoal('');
                             setIsPublic(false);
-
-                            setAllRoutines(prevRoutines =>( [newRoutine,...prevRoutines]));
+                            setAllRoutines(prevRoutines =>( [...prevRoutines, newRoutine]));
                         }
                     } catch (err) {
                         console.log(err);
