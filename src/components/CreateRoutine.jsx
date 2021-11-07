@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { addRoutine } from '../api';
 import logo from '../images/ftLogoWhite.png';
 
-const CreateRoutine = ({ setAllRoutines, allRoutines }) => {
+const CreateRoutine = ({ setAllRoutines }) => {
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false);
-
+  
     return (
         <div className="create-activity-main-container">
             <img className='create-logo' src={logo} />
@@ -17,12 +17,13 @@ const CreateRoutine = ({ setAllRoutines, allRoutines }) => {
                     e.preventDefault();
                     try {
                         if (!name || !goal) {
-                            alert('Please be sure to enter a name and goal')
+                            alert('Please be sure to enter a name and goal');
                         } else {
                             const newRoutine = await addRoutine(name, goal, isPublic);
                             setName('');
                             setGoal('');
                             setIsPublic(false);
+                      
                             setAllRoutines(prevRoutines =>( [...prevRoutines, newRoutine]));
                         }
                     } catch (err) {

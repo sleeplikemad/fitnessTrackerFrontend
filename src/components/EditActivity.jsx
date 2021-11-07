@@ -24,14 +24,12 @@ const EditActivity = ({ allActivities, setAllActivities }) => {
                     e.preventDefault();
                     try {
                         const updatedActivity = await updateActivity(name, description, activity.id);
-                        const filteredActvities = allActivities.filter(e=>{
-                            if (e.id !== updatedActivity.id){
+                        const filteredActvities = allActivities.filter(e => {
+                            if (e.id !== updatedActivity.id) {
                                 return e;
                             }
-                        })
-                        // const allActivitiesCopy = allActivities.slice();
-                        // allActivitiesCopy.push(updatedActivity);
-                        console.log(updatedActivity.id, "!!!!!")
+                        });
+
                         setAllActivities([...filteredActvities, updatedActivity]);
                         handleClick();
                     } catch (err) {

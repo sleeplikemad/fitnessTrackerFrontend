@@ -12,7 +12,7 @@ export async function loginUser(username, password) {
       password: password
 
     });
-    console.log("login: ", data)
+  
     return data;
   } catch (error) {
     throw error;
@@ -24,12 +24,12 @@ export async function fetchUserRoutines(username) {
   try {
     const token = getToken()
     const { data } = await axios.get(`${BASE}/users/${username}/routines`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        }
       }
-    }
     );
     return data;
   } catch (error) {
@@ -37,15 +37,11 @@ export async function fetchUserRoutines(username) {
   }
 }
 
-
-
 // na: get's all activities
 export async function fetchAllActivities() {
   try {
-   
     const { data } = await axios.get(`${BASE}/activities`);
 
-    console.log("fetchAllActivities: ", data)
     return data;
   } catch (error) {
     throw error;
@@ -56,12 +52,10 @@ export async function fetchAllActivities() {
 export async function registerUser(username, password) {
   try {
     const { data } = await axios.post(`${BASE}/users/register`, {
-
       username: username,
       password: password
-
     });
-    console.log("registerUser: ", data)
+   
     return data;
   } catch (error) {
     throw error;
@@ -78,9 +72,9 @@ export async function addActivities(
     const { data } = await axios.post(
       `${BASE}/activities`,
       {
-          name: name,
-          description: description,
-        
+        name: name,
+        description: description,
+
       },
       {
         headers: {
@@ -89,14 +83,12 @@ export async function addActivities(
         },
       }
     );
-    console.log("addActivities: ", data)
+  
     return data;
   } catch (error) {
     throw error;
   }
 }
-
-
 
 // a: updates activity
 export async function updateActivity(
@@ -109,8 +101,8 @@ export async function updateActivity(
     const { data } = await axios.patch(
       `${BASE}/activities/${activityId}`,
       {
-          name: name,
-          description: description
+        name: name,
+        description: description
       },
       {
         headers: {
@@ -119,7 +111,7 @@ export async function updateActivity(
         },
       }
     );
-    console.log("updateActivity: ", data)
+    
     return data;
   } catch (error) {
     throw error;
@@ -129,11 +121,7 @@ export async function updateActivity(
 // na: gets list of public routines that use specified activity
 export async function fetchRoutinesByActivity(activityId) {
   try {
-
     const { data } = await axios.get(`${BASE}/activities/${activityId}/routines`);
-    console.log("fetchRoutinesByActivity: ", data)
-
-
     return data;
   } catch (err) {
     console.log(err);
@@ -145,7 +133,6 @@ export async function fetchAllRoutines() {
   try {
     const { data } = await axios.get(`${BASE}/routines`);
 
-    console.log("fetchAllRoutines: ", data)
     return data;
   } catch (err) {
     console.log(err);
@@ -194,7 +181,6 @@ export async function addRoutine(
       }
     );
 
-    console.log("addRoutine: ", data)
     return data;
   } catch (error) {
     throw error;
@@ -213,9 +199,9 @@ export async function updateRoutine(
     const { data } = await axios.patch(
       `${BASE}/routines/${routineId}`,
       {
-          name: name,
-          goal: goal,
-          isPublic: isPublic
+        name: name,
+        goal: goal,
+        isPublic: isPublic
       },
       {
         headers: {
@@ -225,7 +211,6 @@ export async function updateRoutine(
       }
     );
 
-    console.log("updateRoutine: ", data)
     return data;
   } catch (error) {
     throw error;
@@ -244,10 +229,10 @@ export async function deleteRoutine(
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
-        },
+        }
       }
     );
-    console.log("deleteRoutine: ", data)
+   
     return data;
   } catch (error) {
     throw error;
@@ -278,7 +263,6 @@ export async function addActivityToRoutine(
       }
     );
 
-    console.log("addActivityToRoutine: ", data)
     return data;
   } catch (error) {
     throw error;
@@ -307,7 +291,6 @@ export async function updateRoutineActivity(
       }
     );
 
-    console.log("updateRoutineActivity: ", data)
     return data;
   } catch (error) {
     throw error;
@@ -329,7 +312,7 @@ export async function deleteRoutineActivity(
         },
       }
     );
-    console.log("deleteRoutineActivity: ", data)
+   
     return data;
   } catch (error) {
     throw error;
