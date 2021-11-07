@@ -25,9 +25,7 @@ const CreateRoutine = ({ allRoutines, setAllRoutines }) => {
                             setGoal('');
                             setIsPublic(false);
 
-                            const allRoutinesCopy = allRoutines.slice();
-                            allRoutinesCopy.push(newRoutine);
-                            setAllRoutines(allRoutinesCopy);
+                            setAllRoutines(prevRoutines => [...prevRoutines, newRoutine]);
 
                         }
                     } catch (err) {

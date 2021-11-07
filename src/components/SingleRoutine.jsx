@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getMyID } from '../api';
 import { DeleteRoutineButton } from './';
-import { images } from './RandomImage'
+import { images } from './RandomImage';
 
 const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
     function randomize() {
@@ -46,11 +46,11 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                                         className="routine-activity-link"
                                         to={{
                                             pathname: "/routine_activities",
-                                            state: { 
+                                            state: {
                                                 creatorId: e.creatorId,
-                                                activity: e.activities, 
-                                                name: e.name, 
-                                                routineId: e.id, 
+                                                activity: e.activities,
+                                                name: e.name,
+                                                routineId: e.id,
                                                 routineGoal: e.goal,
                                                 rIsPublic: e.isPublic
                                             },
@@ -58,23 +58,23 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                                         <button>Let's Go!</button>
                                     </Link>
 
-                                { userId === e.creatorId
-                                        ? <div className="edit-delete"> 
-                                        <Link
-                                            className="edit-routine-link"
-                                            to={{
-                                                pathname: "/editroutine",
-                                                state: {
-                                                    routineId: e.id,
-                                                    routineName: e.name,
-                                                    routineGoal: e.goal,
-                                                    rIsPublic: e.isPublic
-                                                }
-                                            }}>
-                                            <button>
-                                                <span className="material-icons">edit</span>
-                                            </button>
-                                        </Link>
+                                    {userId === e.creatorId
+                                        ? <div className="edit-delete">
+                                            <Link
+                                                className="edit-routine-link"
+                                                to={{
+                                                    pathname: "/editroutine",
+                                                    state: {
+                                                        routineId: e.id,
+                                                        routineName: e.name,
+                                                        routineGoal: e.goal,
+                                                        rIsPublic: e.isPublic
+                                                    }
+                                                }}>
+                                                <button>
+                                                    <span className="material-icons">edit</span>
+                                                </button>
+                                            </Link>
                                             <DeleteRoutineButton
                                                 routineId={e.id}
                                                 allRoutines={allRoutines}
@@ -82,7 +82,7 @@ const SingleRoutine = ({ allRoutines, setAllRoutines }) => {
                                             />
                                         </div>
                                         : null
-                                }
+                                    }
                                 </div>
                             </div>
                         )

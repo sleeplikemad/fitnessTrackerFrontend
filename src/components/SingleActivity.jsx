@@ -3,21 +3,18 @@ import { SingleRoutine } from './';
 import { useLocation } from "react-router-dom"
 import { fetchRoutinesByActivity } from "../api"
 
-
-
 const SingleActivity = ({ }) => {
-
     const pageLocation = useLocation();
     const { activity } = pageLocation.state
     const [routines, setRoutines] = useState([])
 
     useEffect(() => {
         async function setUp() {
-            const temp = await fetchRoutinesByActivity(activity.id)
+            const temp = await fetchRoutinesByActivity(activity.id);
             if (temp)
-                setRoutines(temp)
+                setRoutines(temp);
         }
-        setUp()
+        setUp();
     }, []);
 
 
