@@ -98,28 +98,6 @@ const SingleRoutineActivity = ({ isLoggedIn }) => {
                     })
                     : <p>There are no activities for this routine.</p>
             }
-<<<<<<< HEAD
-            {console.log("LOGGEDIN: ", isLoggedIn)}
-            {console.log("CREATORID: ", creatorId)}
-            {console.log("userid: ", userID)}
-            { isLoggedIn && userID === creatorId ?
-                <Link
-                    className="add-activity-link"
-                    to={{
-                        pathname: "/addactivity",
-                        state: {
-                            routineId: routineId,
-                            routineName: name,
-                            routineGoal: routineGoal,
-                            rIsPublic: rIsPublic
-                        }
-                    }}>
-                    <button>
-                        <span className="add-icon">+Add an Activity</span>
-                    </button>
-                </Link>
-                : null}
-=======
             { isLoggedIn && userID === creatorId ? 
             <Link 
                 className="add-activity-link"
@@ -137,7 +115,6 @@ const SingleRoutineActivity = ({ isLoggedIn }) => {
                 </button>
             </Link>
             : null }
->>>>>>> b482901103dbab12b675cfd62521f67beb80439d
         </div>
     )
 }

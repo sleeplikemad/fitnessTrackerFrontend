@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { fetchUserRoutines } from '../api';
 import { SingleRoutine } from './';
 
-const UserRoutines = () => {
+const UserRoutines = ({ allRoutines, setAllRoutines }) => {
     const [userRoutines, setUserRoutines] = useState([]);
     const pageLocation = useLocation();
     const { creatorName } = pageLocation.state;
@@ -19,7 +19,7 @@ const UserRoutines = () => {
             }
         }
         getUserRoutines();
-    });
+    }, []);
 
     return (
         <div className="user-routines-main-container">
