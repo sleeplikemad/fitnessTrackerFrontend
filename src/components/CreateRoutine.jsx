@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addRoutine } from '../api';
 import logo from '../images/ftLogoWhite.png';
 
-const CreateRoutine = ({ setAllRoutines }) => {
+const CreateRoutine = ({ setAllRoutines, allRoutines }) => {
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false);
@@ -25,8 +25,7 @@ const CreateRoutine = ({ setAllRoutines }) => {
                             setGoal('');
                             setIsPublic(false);
 
-                            setAllRoutines(prevRoutines => [...prevRoutines, newRoutine]);
-
+                            setAllRoutines(prevRoutines =>( [newRoutine,...prevRoutines]));
                         }
                     } catch (err) {
                         console.log(err);

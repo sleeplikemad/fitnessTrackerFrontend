@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { clearCurrentUser, getToken } from "../auth"
 import logoIcon from '../images/ftLogo.png'
 
-const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn, username }) => {
   const token = getToken();
   const [navbar, setNavbar] = useState(false);
-  const location = useLocation()
+  const location = useLocation();
 
   const toggleBackground = () => {
     if (window.scrollY >= 80) {
@@ -23,10 +23,18 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
     }
   }, []);
 
-
   return (
-    <div className={navbar || location.pathname === '/' ? 'navbar active' : 'navbar'}>
-      <section className="nav-links">
+    <div className={
+      location.pathname === '/login' || location.pathname === '/register'
+        || location.pathname === '/activities/routines'
+        || location.pathname === `/routinesby/${username}` ? 'navbar transparent'
+        : navbar ? 'navbar active'
+          : 'navbar'
+    }>
+      <section className={location.pathname === '/login'
+        || location.pathname === '/register'
+        || location.pathname === '/activities/routines'
+        || location.pathname === `/routinesby/${username}` ? 'nav-right' : 'nav-links'}>
         <a href="https://joyfoodsunshine.com/the-most-amazing-chocolate-chip-cookies/">
           <img className="nav-logo-icon" src={logoIcon} /></a>
         <NavLink to="/">Home</NavLink>
