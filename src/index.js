@@ -35,17 +35,20 @@ const App = () => {
   const location = useLocation();
   const name = location.pathname.split("/").pop();
 
-  useEffect(async () => {
-    try {
-      const routines = await fetchAllRoutines();
-      setAllRoutines(routines);
+  useEffect(() => {
+    async function setUp() {
+      try {
+        const routines = await fetchAllRoutines();
+        setAllRoutines(routines);
 
-      const activities = await fetchAllActivities();
-      setAllActivities(activities);
+        const activities = await fetchAllActivities();
+        setAllActivities(activities);
 
-    } catch (err) {
-      console.log(err);
+      } catch (err) {
+        console.log(err);
+      }
     }
+    setUp();
   }, []);
 
   return (
@@ -135,11 +138,13 @@ const App = () => {
             <div className="create-act">
               {
                 isLoggedIn
+
                   ? <CreateActivity
                     allActivities={allActivities}
                     setAllActivities={setAllActivities}
                   />
                   : null
+
               }
             </div>
           </>

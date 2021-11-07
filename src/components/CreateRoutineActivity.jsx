@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { addActivityToRoutine } from '../api';
 import { useLocation, useHistory } from "react-router-dom";
 
-
 const CreateRoutineActivity = ({ allActivities }) => {
     const [activityId, setActivityId] = useState(allActivities[0].id);
     const pageLocation = useLocation();

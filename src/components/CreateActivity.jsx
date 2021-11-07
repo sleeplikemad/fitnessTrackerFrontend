@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { addActivities } from '../api';
 import logo from '../images/ftLogoWhite.png';
 
-const CreateActivity = ({ allActivities, setAllActivities, isLoggedIn }) => {
+const CreateActivity = ({ allActivities, setAllActivities}) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
 
     return (
         <div className="create-activity-main-container">
-<img className='create-logo' src={logo}/>
+            <img className='create-logo' src={logo} />
             <h2>Create a New Activity </h2>
             <form
                 className="create-routine-form"
@@ -22,7 +22,7 @@ const CreateActivity = ({ allActivities, setAllActivities, isLoggedIn }) => {
                         });
 
                         if (activityExists.length) {
-                            alert('This activity already exists')
+                            alert('This activity already exists');
                         } else {
                             const newActivity = await addActivities(name, description);
                             setName('');

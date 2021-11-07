@@ -3,7 +3,7 @@ import { SingleRoutine } from './';
 import { useLocation } from "react-router-dom"
 import { fetchRoutinesByActivity } from "../api"
 
-const SingleActivity = ({ }) => {
+const SingleActivity = () => {
     const pageLocation = useLocation();
     const { activity } = pageLocation.state
     const [routines, setRoutines] = useState([])

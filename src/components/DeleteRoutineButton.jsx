@@ -8,13 +8,13 @@ const DeleteRoutineButton = ({ routineId, setAllRoutines }) => {
             onClick={async () => {
                 try {
                     await deleteRoutine(routineId);
-                  
-                    setAllRoutines(prevRoutines=>(prevRoutines.filter(routine=>routine.id !== routineId)));
+
+                    setAllRoutines(prevRoutines => (prevRoutines.filter(routine => routine.id !== routineId)));
                 } catch (err) {
                     console.log(err);
                 }
             }}>
-            <span className="material-icons">delete</span> 
+            <span className="material-icons">delete</span>
         </button>
     )
 }

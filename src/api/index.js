@@ -136,8 +136,6 @@ export async function fetchRoutinesByActivity(activityId) {
 // na: gets all public routines
 export async function fetchAllRoutines() {
   try {
-
-    const token = getToken();
     const { data } = await axios.get(`${BASE}/routines`);
 
     console.log("fetchAllRoutines: ", data)
