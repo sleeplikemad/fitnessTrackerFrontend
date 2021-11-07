@@ -30,7 +30,7 @@ import {
 
 const App = () => {
   const [allRoutines, setAllRoutines] = useState([]);
-  const [allActivities, setAllActivities] = useState([])
+  const [allActivities, setAllActivities] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
   const name = location.pathname.split("/").pop();
@@ -53,12 +53,18 @@ const App = () => {
 
   return (
     <div id="app">
-      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <Navbar
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        username={name} />
 
       <Switch>
         <Route path="/routines">
-          <Routines allRoutines={allRoutines} setAllRoutines={setAllRoutines} />
+          <Routines
+            allRoutines={allRoutines}
+            setAllRoutines={setAllRoutines} />
         </Route>
+
         <Route path="/myroutines">
           {isLoggedIn
             ? <>
@@ -79,6 +85,7 @@ const App = () => {
             : null
           }
         </Route>
+
         <Route path="/routinesby/:creatorName">
           <div className="single-activity-main">
             <div className="single-activity-title">
@@ -92,6 +99,7 @@ const App = () => {
             </div>
           </div>
         </Route>
+
         <Route path="/editroutine">
           {isLoggedIn
             ? <EditRoutine
@@ -101,6 +109,7 @@ const App = () => {
             : null
           }
         </Route>
+
         <Route path="/addactivity">
           {isLoggedIn
             ? <CreateRoutineActivity
@@ -110,6 +119,7 @@ const App = () => {
             : null
           }
         </Route>
+
         <Route path="/editroutineactivity">
           {isLoggedIn
             ? <EditRoutineActivity
@@ -120,6 +130,7 @@ const App = () => {
             : null
           }
         </Route>
+
         <Route path="/routine_activities">
           <SingleRoutineActivity
             isLoggedIn={isLoggedIn}
@@ -128,7 +139,9 @@ const App = () => {
         </Route>
 
         <Route path="/activities/routines">
-          <SingleActivity />
+          <div className="activities-routines">
+            <SingleActivity />
+          </div>
         </Route>
 
         <Route path="/activities">
@@ -150,13 +163,6 @@ const App = () => {
           </>
         </Route>
 
-        {/* <Route path="/createactivity">
-          <CreateActivity
-            allActivities={allActivities}
-            setAllActivities={setAllActivities}
-            isLoggedIn={isLoggedIn} />
-        </Route> */}
-
         <Route path="/editactivity">
           {isLoggedIn
             ? <EditActivity
@@ -170,9 +176,11 @@ const App = () => {
         <Route path="/login">
           <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
+
         <Route path="/register">
           <Register isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
+
         <Route exact path="/">
           <Header />
         </Route>
