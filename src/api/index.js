@@ -23,7 +23,14 @@ export async function loginUser(username, password) {
 export async function fetchUserRoutines(username) {
   try {
     const token = getToken()
-    const { data } = await axios.get(`${BASE}/users/${username}/routines`);
+    const { data } = await axios.get(`${BASE}/users/${username}/routines`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      }
+    }
+    );
     return data;
   } catch (error) {
     throw error;

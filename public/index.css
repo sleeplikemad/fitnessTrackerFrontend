@@ -47,7 +47,6 @@ button:hover {
 
 .navbar.active {
     background: rgba(238, 99, 82, 1);
-    ;
 }
 
 .navbar.transparent {
@@ -81,11 +80,11 @@ button:hover {
 }
 
 .navbar a:hover {
-    color: #82886d;
+    color: #12427c;
 }
 
 .navbar a:last-child {
-    border: 1px solid #82886d;
+    border: 1px solid #12427c;
 }
 
 /* header */
@@ -422,7 +421,7 @@ button:hover {
 /* My Routine */
 
 .my-routines-main-container {
-    margin-top: 6%;
+    margin-top: 4%;
 }
 
 .no-myroutines {
