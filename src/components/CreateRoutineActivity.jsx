@@ -13,7 +13,7 @@ const CreateRoutineActivity = ({ allActivities, isLoggedIn , allRoutines, setAll
         rIsPublic} = pageLocation.state
     const [duration, setDuration] = useState('');
     const [count, setCount] = useState("");
-
+ 
     const history = useHistory();
 
     const handleClick = () => {
