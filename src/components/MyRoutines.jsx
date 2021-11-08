@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { getMyID, fetchUserRoutines } from '../api'
+import { getMyID, fetchUserRoutines } from '../api';
 import { SingleRoutine } from './';
 
-const MyRoutines = ({ allRoutines, isLoggedIn }) => {
+const MyRoutines = ({ isLoggedIn, setAllRoutines }) => {
     const [userRoutines, setUserRoutines] = useState([]);
-    
+
     useEffect(() => {
         async function getUserRoutines() {
             try {
@@ -18,7 +18,7 @@ const MyRoutines = ({ allRoutines, isLoggedIn }) => {
             }
         }
         getUserRoutines();
-    }, [allRoutines]);
+    }, []);
 
     return (
         <div className="my-routines-main-container">
@@ -28,7 +28,8 @@ const MyRoutines = ({ allRoutines, isLoggedIn }) => {
                         {userRoutines.length
                             ? <SingleRoutine
                                 allRoutines={userRoutines}
-                            /> : <p className="no-myroutines">You have no routines yet! Scroll down to create one</p>
+                                setAllRoutines={setAllRoutines}
+                            /> : <h2 className="no-myroutines">You have no routines yet!</h2>
                         }
 
                     </div>

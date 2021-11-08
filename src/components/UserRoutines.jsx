@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 import { fetchUserRoutines } from '../api';
 import { SingleRoutine } from './';
 
-const UserRoutines = () => {
+const UserRoutines = ({ allRoutines, setAllRoutines }) => {
     const [userRoutines, setUserRoutines] = useState([]);
     const pageLocation = useLocation();
     const { creatorName } = pageLocation.state;
@@ -11,15 +11,14 @@ const UserRoutines = () => {
     useEffect(() => {
         async function getUserRoutines() {
             try {
-                const routines = await fetchUserRoutines(creatorName);
+                const routines = allRoutines.filter(e => e.creatorName === creatorName);
                 setUserRoutines(routines);
-
             } catch (err) {
-                console.log(err)
+                console.log(err);
             }
         }
         getUserRoutines();
-    });
+    }, []);
 
     return (
         <div className="user-routines-main-container">

@@ -17,6 +17,7 @@ a {
 
 h2 {
     color: #0A2342;
+    text-align: center;
 }
 
 button:hover {
@@ -34,25 +35,35 @@ button:hover {
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     overflow: hidden;
     position: fixed;
     top: 1em;
     width: 100%;
-    height: 80px;
-    background: transparent;
+    height: 60px;
+    background: rgba(238, 99, 82, .8);
 }
 
 .navbar.active {
-    background: rgba(236, 236, 236, .6)
+    background: rgba(238, 99, 82, 1);
+}
+
+.navbar.transparent {
+    background: transparent;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 50%;
 }
 
 .nav-links {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 0 1 50%;
 }
 
 .nav-logo-icon {
@@ -69,11 +80,11 @@ button:hover {
 }
 
 .navbar a:hover {
-    color: #82886d;
+    color: #12427c;
 }
 
 .navbar a:last-child {
-    border: 1px solid #82886d;
+    border: 1px solid #12427c;
 }
 
 /* header */
@@ -92,8 +103,6 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* flex: 0 1 50%; */
-    /* background-color:#ececec; */
     height: 100vh;
 }
 
@@ -106,8 +115,6 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* flex: 0 1 50%;
-    height: 100%;  */
     position: fixed;
     color: #ececec;
 }
@@ -265,13 +272,11 @@ button:hover {
 .single-routine-main-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
-    align-items: center;
-    height: 100vh;
     width: 100%;
-    margin-top: 3em;
+    margin-top: 3rem;
 }
 
 .single-routine-card {
@@ -299,7 +304,6 @@ button:hover {
 }
 
 .single-routine-title {
-    /* margin: .5em; */
     padding: 5px;
     color: #ececec;
     width: 250px;
@@ -336,12 +340,6 @@ button:hover {
     font-weight: 600;
 }
 
-.routine-activity-link button:hover {
-    background: #F87060;
-    -webkit-box-shadow: 4px 2px 9px -1px #000;
-    box-shadow: 4px 2px 9px -1px #000;
-}
-
 /* routine activity */
 
 .single-routine-activity-main {
@@ -350,9 +348,9 @@ button:hover {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    align-items: center;
     height: 100vh;
     width: 100%;
+    margin-top: 6%;
 }
 
 .single-routine-activity-main h2 {
@@ -421,7 +419,16 @@ button:hover {
 }
 
 /* My Routine */
+
 .my-routines-main-container {
+    margin-top: 4%;
+}
+
+.no-myroutines {
+    margin: 1em;
+}
+
+.user-routines-main-container {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -429,20 +436,12 @@ button:hover {
     align-items: center;
     align-items: center;
     height: 100vh;
-    width: 80%;
-    margin-top: 3.5em;
-}
-
-.my-routines-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3rem;
+    width: 100%;
+    margin-top: 1em;
 }
 
 /* activities */
+
 .single-activity-main-container {
     display: flex;
     justify-content: center;
@@ -473,31 +472,21 @@ button:hover {
     font-weight: 600;
 }
 
-.single-activity-description .blue{
+.single-activity-description .blue {
     margin: .6em;
     padding: 10px;
     color: #ececec;
-    /* color: #0A2342; */
-    width:250px;
+    width: 250px;
 }
 
-.single-activity-description .grey{
+.single-activity-description .grey {
     margin: .6em;
     padding: 10px;
-    color: #0A2342; 
-    width:250px;
+    color: #0A2342;
+    width: 250px;
 }
 
-.single-activity-title{
-margin: .6em;
-padding: 10px;
-color: #ececec;
-width:250px;
-/* background-color:#13427C; */
-
-}
-
-.single-activity-card p{
+.single-activity-card p {
     color: #ececec;
 }
 
@@ -524,7 +513,7 @@ width:250px;
     margin: 8px 5px;
     border-radius: 5px;
     padding: 10px;
-    width:100px;
+    width: 100px;
 }
 
 /* create routine */
@@ -598,6 +587,7 @@ width:250px;
 }
 
 /* create routineActivity */
+
 .italicized {
     font-style: italic;
 }
@@ -669,6 +659,7 @@ width:250px;
     flex: 1 0 30%;
     height: 100vh;
     background: #0A2342;
+    margin: 0;
 }
 
 .single-activity-title h2 {
@@ -689,7 +680,6 @@ width:250px;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
     align-items: center;
     margin-top: 6rem;
     width: 100%;
@@ -719,7 +709,10 @@ width:250px;
 /* my routines */
 
 .single-my-routine {
-    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6%;
 }
 
 /* various buttons */
@@ -730,7 +723,7 @@ width:250px;
 
 .material-icons {
     font-family: 'Material Icons';
-    color: white;
+    color: #ee6352;
     padding: 10px;
     font-size: 28px;
     background-color: #0A2342;
@@ -764,4 +757,31 @@ width:250px;
     height: 300px;
     padding: 12px;
     background-color: #0a2342;
+}
+
+.complete {
+    text-decoration: line-through;
+    text-decoration-color: #F87060;
+    text-decoration-thickness: 5px;
+}
+
+.add-activity-link button {
+    background-color: #ee6352;
+    color: white;
+    margin: 8px 5px;
+    border-radius: 5px;
+    padding: 10px;
+    width: 400px;
+    font-weight: 600;
+    margin: 1.5em;
+}
+
+.white {
+    background: #ececec;
+}
+
+.auto-scroll{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1em;
 }
