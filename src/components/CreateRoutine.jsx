@@ -25,6 +25,7 @@ const CreateRoutine = ({ setAllRoutines }) => {
                             setIsPublic(false);
                       
                             setAllRoutines(prevRoutines =>( [...prevRoutines, newRoutine]));
+                            window.location.reload();
                         }
                     } catch (err) {
                         console.log(err);
